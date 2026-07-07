@@ -39,7 +39,7 @@ const works = [
 
 export default function OurWorks() {
   return (
-    <section className="bg-black py-24 px-2 lg:px-4 xl:px-8">
+    <section className="bg-black pt-24 px-2 lg:px-4 xl:px-8">
       <div className="max-w-7xl 2xl:max-w-full mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-white text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl 3xl:text-8xl font-bold mt-4">

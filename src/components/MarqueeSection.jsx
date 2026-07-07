@@ -84,7 +84,7 @@ function MarqueeRow({ reverse = false, speed = 80 }) {
 
 export default function MarqueeSection() {
   return (
-    <section className="relative overflow-hidden bg-black py-16">
+    <section className="relative overflow-hidden bg-black ">
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-black to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-black to-transparent" />
 

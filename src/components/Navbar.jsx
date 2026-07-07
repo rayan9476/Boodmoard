@@ -18,7 +18,7 @@ export default function Navbar() {
   return (
     <>
       <header className="fixed z-50 w-full  flex items-center justify-start lg:justify-between  gap-10 lg:gap-0 px-2 lg:px-4 xl:px-8 py-4 bg-[#000] ">
-        <div className="hamburgers lg:hidden">
+        <div className="hamburgers hidden lg:hidden">
           <button
             className={`hamburger !p-0 cursor-pointer hamburger--slider ${isMenuOpen ? "is-active" : ""}`}
             type="button"
