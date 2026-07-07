@@ -17,7 +17,7 @@ export default function Navbar() {
   const [active, setActive] = useState(false);
   return (
     <>
-      <header className="relative z-50  flex items-center justify-start lg:justify-between  gap-10 lg:gap-0 px-2 lg:px-4 xl:px-8 py-4 bg-[#000] ">
+      <header className="fixed z-50 w-full  flex items-center justify-start lg:justify-between  gap-10 lg:gap-0 px-2 lg:px-4 xl:px-8 py-4 bg-[#000] ">
         <div className="hamburgers lg:hidden">
           <button
             className={`hamburger !p-0 cursor-pointer hamburger--slider ${isMenuOpen ? "is-active" : ""}`}
@@ -70,7 +70,7 @@ export default function Navbar() {
         </div>
       </header>
 
-      <NavbarMenu isMenuOpen={isMenuOpen} navLinks={navLinks} />
+      {/* <NavbarMenu isMenuOpen={isMenuOpen} navLinks={navLinks} /> */}
     </>
   );
 }
