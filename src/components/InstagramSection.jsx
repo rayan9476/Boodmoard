@@ -57,7 +57,7 @@ const reels = [
 
 export default function InstagramSection() {
   return (
-    <section className="bg-black pt-20 px-5">
+    <section className="bg-black py-20 px-5">
       <div className="max-w-7xl 2xl:max-w-full mx-auto">
         <div className="text-center mb-16">
           <p className="uppercase tracking-[5px] text-green-400 text-sm xl:text-md 2xl:text-lg 3xl:text-xl font-medium">
