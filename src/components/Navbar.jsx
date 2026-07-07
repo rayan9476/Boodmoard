@@ -1,7 +1,7 @@
 import "hamburgers/dist/hamburgers.css";
 import { useState } from "react";
 import NavbarMenu from "./NavbarMenu";
-
+import logo from "../assets/boodmoard-transparent-cropped.png";
 export default function Navbar() {
   const navLinks = [
     "Home",
@@ -33,8 +33,8 @@ export default function Navbar() {
         <div className="logo  w-[200px] flex items-center justify-center ">
           <img
             className="w-full h-full object-cover"
-            src="/src/assets/boodmoard-transparent-cropped.png"
-            alt=""
+            src={logo}
+            alt="site logo"
           />
         </div>
 
