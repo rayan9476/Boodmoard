@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-3xl: 160rem;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: black;
+}
+
+.hamburger-inner,
+.hamburger-inner::before,
+.hamburger-inner::after {
+  width: 30px !important;
+  background-color: #ffffff !important;
+}
