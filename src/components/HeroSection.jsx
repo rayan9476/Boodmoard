@@ -11,7 +11,7 @@ const slide = {
   cta: "Contact ",
 };
 
-export default function HeroCarousel() {
+export default function HeroSection() {
   return (
     <div
       className="hero-carousel    relative w-full "

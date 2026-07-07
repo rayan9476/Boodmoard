@@ -1,5 +1,5 @@
 import "./App.css";
-import HeroCarousel from "./components/HeroCarousel";
+import HeroSection from "./components/HeroSection";
 import InstagramSection from "./components/InstagramSection";
 import Marquee from "./components/MarqueeSection";
 import Navbar from "./components/Navbar";
@@ -9,7 +9,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <HeroCarousel />
+      <HeroSection />
       <Marquee />
       <OurWorks />
       <InstagramSection />
