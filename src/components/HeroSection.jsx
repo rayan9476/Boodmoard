@@ -1,100 +1,226 @@
+import { motion } from "framer-motion";
+import { Palette, Rocket, Star } from "lucide-react";
 const slide = {
-  id: 1,
-  image:
-    "https://images.unsplash.com/photo-1659522761084-79196b64abe4?q=80&w=770&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-  Illustration: "/src/assets/Illustration.png",
-
-  title: "Lessons and insights ",
-  subtitle: " from 8 years",
-  dsc: "Where to grow your business as a photographer: site or social media?",
-  ata: "About us",
-  cta: "Contact ",
+  title: "We Build Digital",
+  subtitle: "Experiences That Convert",
+  dsc: "Boodmoard is a creative agency crafting modern websites, bold brand identities, and high-performing digital products.",
+  ata: "Our Work",
+  cta: "Contact Us",
 };
 
-export default function HeroSection() {
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  show: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, delay: i * 0.15, ease: [0.25, 0.1, 0.25, 1] },
+  }),
+};
+
+export default function HeroSection({ id }) {
   return (
     <div
-      className="hero-carousel    relative w-full "
-      role="region"
-      aria-label="Hero image carousel"
+      id={id}
+      className="relative w-full py-16 lg:py-28 overflow-hidden bg-[#000] px-[var(--section-padding-x)] lg:px-[var(--section-padding-lg)] xl:px-[var(--section-padding-xl)]"
     >
-      {/* {slides.map((slide) => ( */}
-      <div
-        // key={slide.id}
-        className="w-full h-full px-2 lg:px-4 xl:px-8 overflow-hidden bg-[#000]"
-      >
-        <div className="relative  w-full h-[60vh] sm:h-[70vh] md:h-[80vh] lg:h-[90vh]   ">
-          <div className="flex  flex-col lg:flex-row gap-4  md:gap-12 lg:gap-0 items-center justify-center w-full h-full absolute inset-0  ">
-            <div className="content_container lg:items-start lg:text-left flex flex-col sm:items-center text-center sm:w-full justify-center">
-              <div className="max-w-full  ">
-                <h1 className=" text-[#FFFFFF] text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-[70px] 3xl:text-8xl font-semibold leading-tight mb-3 sm:mb-4 2xl:mb-6 ">
-                  {slide.title} <br />
-                  <span className="text-[#4CAF4F]">{slide.subtitle}</span>
-                </h1>
+      {/* Background glow */}
+      <div className="absolute top-[-200px] left-[-100px] w-[600px] h-[600px] bg-[#4CAF4F]/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-[#4CAF4F]/8 rounded-full blur-[100px] pointer-events-none" />
 
-                <p className="font-satoshi text-gray-300 text-sm sm:text-base md:text-lg lg:text-xl 2xl:text-2xl 3xl:text-3xl mb-6 sm:mb-8 2xl:mb-10 3xl:mb-12 tracking-wide">
-                  {slide.dsc}
-                </p>
+      <div className="w-full  max-w-7xl  2mxl:max-w-full mx-auto ">
+        <div className="relative w-full min-h-[85vh] flex items-center">
+          <div className="flex flex-col lg:flex-row gap-4 md:gap-12 lg:gap-0 items-center justify-between w-full">
+            {/* Left content */}
+            <div className="flex flex-col lg:items-start lg:text-left items-center text-center w-full lg:w-1/2">
+              {/* Tag */}
+              <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                animate="show"
+                custom={0}
+                className="inline-flex items-center gap-2 bg-[#4CAF4F]/10 border border-[#4CAF4F]/30 text-[#4CAF4F] text-xs 3xl:text-lg font-semibold px-4 py-2 rounded-full mb-6 uppercase tracking-widest "
+              >
+                <span className="w-2 h-2 3xl:w-3 3xl:h-3 rounded-full bg-[#4CAF4F] animate-pulse" />
+                Creative Digital Agency
+              </motion.div>
 
-                <div className="flex gap-4 items-center justify-center lg:items-start lg:justify-start">
-                  <button
-                    className="
-    bg-[#4CAF4F]
-    hover:bg-[#43A047]
-    active:bg-[#388E3C]
-    active:scale-95
-    text-[#FFFFFF]
-    font-semibold
-    text-sm sm:text-base xl:text-lg 2xl:text-2xl 3xl:text-3xl
-    px-6 sm:px-8 py-3 sm:py-4 3xl:py-6 
-    leading-none
-    tracking-[0.08em]
-    transition-colors transition-transform
-    duration-300
-    hover:scale-105
+              {/* Title */}
+              <motion.h1
+                variants={fadeUp}
+                initial="hidden"
+                animate="show"
+                custom={1}
+                className="text-[#FFFFFF]  text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[80px] 3xl:text-8xl font-bold leading-tight mb-4"
+              >
+                {slide.title} <br />
+                <span className="text-[#4CAF4F]">{slide.subtitle}</span>
+              </motion.h1>
+
+              {/* Description */}
+              <motion.p
+                variants={fadeUp}
+                initial="hidden"
+                animate="show"
+                custom={2}
+                className="text-gray-400  text-sm sm:text-base md:text-lg lg:text-xl 3xl:text-2xl max-w-xl mb-8 leading-relaxed"
+              >
+                {slide.dsc}
+              </motion.p>
+
+              {/* Buttons */}
+              <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                animate="show"
+                custom={3}
+                className="flex gap-4 items-center justify-center lg:justify-start flex-wrap"
+              >
+                {/* <button className="bg-[#4CAF4F] hover:bg-[#43A047] active:scale-95 text-white font-semibold text-sm sm:text-base 3xl:text-3xl px-8 py-4 rounded-sm tracking-wide transition-all duration-300 hover:scale-105 cursor-pointer">
+                  {slide.ata}
+                </button> */}
+
+                <button
+                  className="
+   bg-[#4CAF4F] hover:bg-[#43A047] active:scale-95 text-white font-semibold text-sm sm:text-base 3xl:text-3xl px-8 py-4 rounded-sm tracking-wide transition-all duration-300 hover:scale-105 cursor-pointer
     transform-gpu
     will-change-transform
-    select-none
-    touch-manipulation
-    cursor-pointer
-    rounded-sm
-  "
-                  >
-                    {slide.ata}
-                  </button>
 
-                  <button
-                    className="
-    bg-[#4CAF4F]
-    hover:bg-[#43A047]
-    active:bg-[#388E3C]
-    active:scale-95
-    text-[#FFFFFF]
-    font-semibold
-    text-sm sm:text-base xl:text-lg 2xl:text-2xl 3xl:text-3xl
-    px-6 sm:px-8 py-3 sm:py-4 3xl:py-6 
-    leading-none
-    tracking-[0.08em]
-    transition-colors transition-transform
-    duration-300
-    hover:scale-105
-    transform-gpu
-    will-change-transform
-    select-none
-    touch-manipulation
-    cursor-pointer
-    rounded-sm
+    
   "
-                  >
-                    {slide.cta}
-                  </button>
-                </div>
-              </div>
+                >
+                  {slide.ata}
+                </button>
+
+                <button className="border border-[#4CAF4F]/50 hover:border-[#4CAF4F] text-[#4CAF4F] hover:bg-[#4CAF4F]/10 font-semibold text-sm sm:text-base 3xl:text-3xl px-8 py-4 rounded-sm tracking-wide transition-all duration-300 cursor-pointer">
+                  {slide.cta}
+                </button>
+              </motion.div>
+
+              {/* Stats */}
+              <motion.div
+                variants={fadeUp}
+                initial="hidden"
+                animate="show"
+                custom={4}
+                className="flex gap-10 mt-12 justify-center lg:justify-start"
+              >
+                {[
+                  { num: "120+", label: "Projects Done" },
+                  { num: "48K", label: "Social Followers" },
+                  { num: "8+", label: "Years Experience" },
+                ].map((stat) => (
+                  <div key={stat.label} className="text-center lg:text-left">
+                    <p className="text-white text-2xl xl:text-3xl 3xl:text-5xl font-bold">
+                      {stat.num}
+                    </p>
+                    <p className="text-zinc-500 text-sm 3xl:text-lg mt-1">
+                      {stat.label}
+                    </p>
+                  </div>
+                ))}
+              </motion.div>
             </div>
+
+            {/* Right side — floating cards visual */}
+            <motion.div
+              initial={{ opacity: 0, x: 60 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{
+                duration: 0.9,
+                delay: 0.3,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
+              className="hidden lg:flex w-1/2 justify-center items-center relative"
+            >
+              {/* Main image card */}
+              <div className="relative w-[380px] h-[460px] 2xl:w-[480px] 2xl:h-[560px] 3xl:w-[800px] 3xl:h-[900px]">
+                <div className="absolute inset-0 rounded-3xl overflow-hidden border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
+                  <img
+                    src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=800&q=80"
+                    alt="Agency work"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                </div>
+
+                {/* Floating badge 1 */}
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{
+                    duration: 3,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                  className="absolute -top-6 -left-10 bg-[#111] border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl transform-gpu will-change-transform"
+                >
+                  <div className="w-9 h-9 3xl:w-12 3xl:h-12 rounded-xl bg-[#4CAF4F]/20 flex items-center justify-center text-lg">
+                    <Palette
+                      className="w-5 h-5 text-green-400"
+                      strokeWidth={2.2}
+                    />
+                  </div>
+                  <div>
+                    <p className="text-white text-sm 3xl:text-base font-bold">
+                      UI Design
+                    </p>
+                    <p className="text-zinc-500 text-xs 3xl:text-sm">
+                      Pixel perfect
+                    </p>
+                  </div>
+                </motion.div>
+
+                {/* Floating badge 2 */}
+                <motion.div
+                  animate={{ y: [0, 10, 0] }}
+                  transition={{
+                    duration: 3.5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 0.5,
+                  }}
+                  className="absolute -bottom-6 -right-10 bg-[#111] border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-[#4CAF4F]/20 flex items-center justify-center text-lg">
+                    <Rocket
+                      className="w-5 h-5 text-[#4CAF4F]"
+                      strokeWidth={2.2}
+                    />
+                  </div>
+                  <div>
+                    <p className="text-white text-sm font-bold">
+                      120+ Projects
+                    </p>
+                    <p className="text-zinc-500 text-xs">Delivered</p>
+                  </div>
+                </motion.div>
+
+                {/* Floating badge 3 */}
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1,
+                  }}
+                  className="absolute top-1/2 -right-14 bg-[#111] border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl"
+                >
+                  <div className="w-9 h-9 rounded-xl bg-[#4CAF4F]/20 flex items-center justify-center text-lg">
+                    <Star
+                      className="w-5 h-5 text-[#4CAF4F]"
+                      strokeWidth={2.2}
+                    />
+                  </div>
+                  <div>
+                    <p className="text-white text-sm font-bold">5.0 Rating</p>
+                    <p className="text-zinc-500 text-xs">Client reviews</p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>
-      {/* ))} */}
     </div>
   );
 }

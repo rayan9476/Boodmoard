@@ -1,12 +1,145 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
 
+* {
+  box-sizing: border-box;
+}
 @theme {
   --breakpoint-3xl: 160rem;
+  --breakpoint-2mxl: 100rem;
+}
+
+:root {
+  --section-padding-x: 0.5rem;
+  --section-padding-lg: 1rem;
+  --section-padding-xl: 2rem;
+  --green-primary: #4caf4f;
+  --green-dark: #166534;
+  --green-glow: rgba(76, 175, 79, 0.15);
+  --green-glow-strong: rgba(76, 175, 79, 0.25);
+}
+
+html {
+  scrollbar-width: none;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+html,
+body {
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
 }
 
 body {
   font-family: "Inter", sans-serif;
   background: black;
+  background-color: #000;
+  color: white;
+  /* background-image:
+    radial-gradient(
+      ellipse 80% 50% at 50% -10%,
+      rgba(76, 175, 79, 0.12) 0%,
+      transparent 60%
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-attachment: fixed; */
+  background-image: radial-gradient(
+    ellipse 80% 50% at 50% -10%,
+    rgba(76, 175, 79, 0.12) 0%,
+    transparent 60%
+  );
+}
+
+html,
+body {
+  height: auto;
+  overflow-y: auto;
+}
+
+/* ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+} */
+
+/* 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #000;
+}
+::-webkit-scrollbar-thumb {
+  background: #4caf4f40;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4caf4f80;
+  cursor: pointer;
+} */
+
+section {
+  position: relative;
+  will-change: transform;
+}
+
+/* Adds a very subtle green top-glow to each section */
+section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(76, 175, 79, 0.2),
+    transparent
+  );
+  pointer-events: none;
+}
+
+/* ─── Float animation ────────────────────────── */
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* ─── Green glow pulse for badges/icons ─────── */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(76, 175, 79, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 25px rgba(76, 175, 79, 0.6);
+  }
+}
+.glow-pulse {
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+
+::selection {
+  background: rgba(76, 175, 79, 0.3);
+  color: white;
 }
 
 .hamburger-inner,
