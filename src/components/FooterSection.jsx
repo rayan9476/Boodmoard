@@ -149,11 +149,6 @@ export default function FooterSection({ id }) {
                       ease: "easeInOut",
                     }
               }
-              // transition={{
-              //   type: "spring",
-              //   stiffness: 500,
-              //   damping: 24,
-              // }}
               className="flex cursor-pointer h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full bg-[#4CAF4F] text-white shadow-[0_10px_35px_rgba(76,175,79,0.35)] transition-shadow hover:shadow-[0_18px_45px_rgba(76,175,79,0.55)]"
               aria-label="Back to top"
             >

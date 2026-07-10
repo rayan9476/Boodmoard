@@ -78,14 +78,15 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-4">
-            <a
+            {/* <a
               href="#contact"
               className="text-sm 2xl:text-lg 3xl:text-2xl text-zinc-400 hover:text-white font-medium transition-colors duration-200"
             >
               Log in
-            </a>
-            <a
-              href="#contact"
+            </a> */}
+            <button
+              type="button"
+              onClick={(e) => handleClick(e, "#contact")}
               className="bg-[#4CAF4F] hover:bg-[#43A047] active:scale-75  hover:scale-95  text-white text-sm 2xl:text-base 3xl:text-2xl font-semibold px-6 py-2.5 rounded-sm 3xl:rounded-md transition-all duration-300  hover:shadow-[0_20px_100px_rgba(76,175,79,0.55)]
                transform-gpu
     will-change-transform
@@ -93,7 +94,7 @@ export default function Navbar() {
                cursor-pointer"
             >
               Get Started
-            </a>
+            </button>
           </div>
 
           <div className="hamburgers   lg:hidden">

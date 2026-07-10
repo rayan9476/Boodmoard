@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Palette, Rocket, Star } from "lucide-react";
+import { useScrollTo } from "./hooks/useScrollTo";
 const slide = {
   title: "We Build Digital",
   subtitle: "Experiences That Convert",
@@ -17,15 +18,22 @@ const fadeUp = {
   }),
 };
 
+const scrollTo = useScrollTo();
+
+const handleClick = (e, target) => {
+  e.preventDefault();
+  scrollTo(target);
+};
+
 export default function HeroSection({ id }) {
   return (
     <div
       id={id}
-      className="relative w-full py-16 lg:py-28 overflow-hidden bg-[#000] px-[var(--section-padding-x)] lg:px-[var(--section-padding-lg)] xl:px-[var(--section-padding-xl)]"
+      className="relative w-full py-16 lg:py-28 overflow-hidden  px-[var(--section-padding-x)] lg:px-[var(--section-padding-lg)] xl:px-[var(--section-padding-xl)]"
     >
       {/* Background glow */}
-      <div className="absolute top-[-200px] left-[-100px] w-[600px] h-[600px] bg-[#4CAF4F]/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-[#4CAF4F]/8 rounded-full blur-[100px] pointer-events-none" />
+      {/* <div className="absolute top-[-200px] left-[-100px] w-[600px] h-[600px] bg-[#4CAF4F]/10 rounded-full blur-[120px] pointer-events-none" /> */}
+      {/* <div className="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-[#4CAF4F]/8 rounded-full blur-[100px] pointer-events-none" /> */}
 
       <div className="w-full  max-w-7xl  2mxl:max-w-full mx-auto ">
         <div className="relative w-full min-h-[85vh] flex items-center">
@@ -80,6 +88,8 @@ export default function HeroSection({ id }) {
                 </button> */}
 
                 <button
+                  type="button"
+                  onClick={(e) => handleClick(e, "#works")}
                   className="
    bg-[#4CAF4F] hover:bg-[#43A047] active:scale-95 text-white font-semibold text-sm sm:text-base 3xl:text-3xl px-8 py-4 rounded-sm tracking-wide transition-all duration-300 hover:scale-105 cursor-pointer
     transform-gpu
@@ -91,7 +101,11 @@ export default function HeroSection({ id }) {
                   {slide.ata}
                 </button>
 
-                <button className="border border-[#4CAF4F]/50 hover:border-[#4CAF4F] text-[#4CAF4F] hover:bg-[#4CAF4F]/10 font-semibold text-sm sm:text-base 3xl:text-3xl px-8 py-4 rounded-sm tracking-wide transition-all duration-300 cursor-pointer">
+                <button
+                  type="button"
+                  onClick={(e) => handleClick(e, "#contact")}
+                  className="border border-[#4CAF4F]/50 hover:border-[#4CAF4F] text-[#4CAF4F] hover:bg-[#4CAF4F]/10 font-semibold text-sm sm:text-base 3xl:text-3xl px-8 py-4 rounded-sm tracking-wide transition-all duration-300 cursor-pointer"
+                >
                   {slide.cta}
                 </button>
               </motion.div>
@@ -144,78 +158,93 @@ export default function HeroSection({ id }) {
                 </div>
 
                 {/* Floating badge 1 */}
-                <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute -top-6 -left-10 bg-[#111] border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl transform-gpu will-change-transform"
-                >
-                  <div className="w-9 h-9 3xl:w-12 3xl:h-12 rounded-xl bg-[#4CAF4F]/20 flex items-center justify-center text-lg">
-                    <Palette
-                      className="w-5 h-5 text-green-400"
-                      strokeWidth={2.2}
-                    />
-                  </div>
-                  <div>
-                    <p className="text-white text-sm 3xl:text-base font-bold">
-                      UI Design
-                    </p>
-                    <p className="text-zinc-500 text-xs 3xl:text-sm">
-                      Pixel perfect
-                    </p>
-                  </div>
-                </motion.div>
 
+                <div className="absolute -top-6 -left-10">
+                  <motion.div
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{
+                      duration: 3,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    }}
+                  >
+                    <div className="floating-card border border-white/10 bg-white/2 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl transform-gpu will-change-transform">
+                      <div className="w-9 h-9 3xl:w-12 3xl:h-12 rounded-xl bg-[#4CAF4F]/20 flex items-center justify-center text-lg">
+                        <Palette
+                          className="w-5 h-5 text-green-400"
+                          strokeWidth={2.2}
+                        />
+                      </div>
+                      <div className="flex items-start justify-start flex-col will-change-transform">
+                        <p className="text-white text-sm 3xl:text-base font-bold ">
+                          UI Design
+                        </p>
+                        <p className="text-[#4CAF4F] font-bold text-xs 3xl:text-sm ">
+                          Pixel perfect
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
                 {/* Floating badge 2 */}
-                <motion.div
-                  animate={{ y: [0, 10, 0] }}
-                  transition={{
-                    duration: 3.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 0.5,
-                  }}
-                  className="absolute -bottom-6 -right-10 bg-[#111] border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl"
-                >
-                  <div className="w-9 h-9 rounded-xl bg-[#4CAF4F]/20 flex items-center justify-center text-lg">
-                    <Rocket
-                      className="w-5 h-5 text-[#4CAF4F]"
-                      strokeWidth={2.2}
-                    />
-                  </div>
-                  <div>
-                    <p className="text-white text-sm font-bold">
-                      120+ Projects
-                    </p>
-                    <p className="text-zinc-500 text-xs">Delivered</p>
-                  </div>
-                </motion.div>
+
+                <div className="absolute -bottom-6 -right-10">
+                  <motion.div
+                    animate={{ y: [0, 10, 0] }}
+                    transition={{
+                      duration: 3.5,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 0.5,
+                    }}
+                  >
+                    <div className="floating-card border border-white/10 bg-white/2 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl transform-gpu will-change-transform">
+                      <div className="w-9 h-9 3xl:w-12 3xl:h-12 rounded-xl bg-[#4CAF4F]/20 flex items-center justify-center text-lg">
+                        <Rocket
+                          className="w-5 h-5 text-[#4CAF4F]"
+                          strokeWidth={2.2}
+                        />
+                      </div>
+                      <div className="flex items-start justify-start flex-col will-change-transform">
+                        <p className="text-white text-sm 3xl:text-base font-bold ">
+                          120+ Projects
+                        </p>
+                        <p className="text-[#4CAF4F] font-bold text-xs 3xl:text-sm ">
+                          Delivered
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
 
                 {/* Floating badge 3 */}
-                <motion.div
-                  animate={{ y: [0, -8, 0] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                    delay: 1,
-                  }}
-                  className="absolute top-1/2 -right-14 bg-[#111] border border-white/10 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl"
-                >
-                  <div className="w-9 h-9 rounded-xl bg-[#4CAF4F]/20 flex items-center justify-center text-lg">
-                    <Star
-                      className="w-5 h-5 text-[#4CAF4F]"
-                      strokeWidth={2.2}
-                    />
-                  </div>
-                  <div>
-                    <p className="text-white text-sm font-bold">5.0 Rating</p>
-                    <p className="text-zinc-500 text-xs">Client reviews</p>
-                  </div>
-                </motion.div>
+
+                <div className="absolute top-1/2 -right-14">
+                  <motion.div
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{
+                      duration: 4,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                      delay: 1,
+                    }}
+                  >
+                    <div className="floating-card border border-white/10 bg-white/2 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl transform-gpu will-change-transform">
+                      <div className="w-9 h-9 3xl:w-12 3xl:h-12 rounded-xl bg-[#4CAF4F]/20 flex items-center justify-center text-lg">
+                        <Star
+                          className="w-5 h-5 text-[#4CAF4F]"
+                          strokeWidth={2.2}
+                        />
+                      </div>
+                      <div className="flex items-start justify-start flex-col will-change-transform">
+                        <p className="text-white text-sm font-bold">
+                          5.0 Rating
+                        </p>
+                        <p className="text-[#4CAF4F] text-xs">Client reviews</p>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
               </div>
             </motion.div>
           </div>

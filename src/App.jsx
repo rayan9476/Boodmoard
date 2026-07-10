@@ -93,7 +93,7 @@ function App() {
           <main>
             <HeroSection id="home" />
             <Suspense fallback={null}>
-              <Marquee id="marquee" />
+              {/* <Marquee id="marquee" /> */}
               <ServicesSection id="services" />
               <OurWorks id="works" />
               <TestimonialsSection id="testimonials" />

@@ -53,12 +53,21 @@ body {
     rgba(76, 175, 79, 0.12) 0%,
     transparent 60%
   );
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 html,
 body {
   height: auto;
   overflow-y: auto;
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 /* ::-webkit-scrollbar {
@@ -85,6 +94,14 @@ body {
   background: #4caf4f80;
   cursor: pointer;
 } */
+
+.floating-card {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  will-change: transform;
+  contain: layout paint;
+}
 
 section {
   position: relative;
