@@ -9,6 +9,7 @@ import {
   FaEnvelope,
   FaPhone,
   FaMapMarkerAlt,
+  FaFacebook,
 } from "react-icons/fa";
 
 const contactInfo = [
@@ -49,7 +50,7 @@ const socials = [
     label: "LinkedIn",
   },
   {
-    icon: <FaBehance size={22} className="3xl:w-9 3xl:h-9" />,
+    icon: <FaFacebook size={22} className="3xl:w-9 3xl:h-9" />,
     href: "#",
     label: "Behance",
   },
@@ -72,10 +73,51 @@ export default function ContactSection({ id }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     service: "",
     budget: "",
     message: "",
   });
+
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) {
+      newErrors.name = "Name is required";
+    } else if (!/^[a-zA-Z\s]+$/.test(formData.name.trim())) {
+      newErrors.name = "Name must contain only letters";
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = "Name must be at least 2 characters";
+    }
+
+    if (!formData.email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
+      newErrors.email = "Please enter a valid email address";
+    }
+
+    if (
+      formData.phone.trim() &&
+      !/^[\d\s\+\-\(\)]{7,15}$/.test(formData.phone.trim())
+    ) {
+      newErrors.phone = "Enter a valid phone number";
+    }
+
+    if (!formData.service) {
+      newErrors.service = "Please select a service";
+    }
+
+    if (!formData.message.trim()) {
+      newErrors.message = "Message is required";
+    } else if (formData.message.trim().length < 10) {
+      newErrors.message = "Message must be at least 10 characters";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const [focused, setFocused] = useState("");
   const [submitted, setSubmitted] = useState(false);
@@ -86,14 +128,39 @@ export default function ContactSection({ id }) {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validate()) return;
+
     setLoading(true);
-    // Simulate submit
-    setTimeout(() => {
-      setLoading(false);
+
+    const SCRIPT_URL =
+      "https://script.google.com/macros/s/AKfycbw300eyX2vr6CRrP2y8cZW2diPQYq-1gaQMRaOG-GFudXguftT9b5CWOH_9UmT9QtDZhA/exec";
+
+    try {
+      await fetch(SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: new URLSearchParams({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          budget: formData.budget,
+          message: formData.message,
+        }).toString(),
+      });
+
       setSubmitted(true);
-    }, 1800);
+    } catch (err) {
+      console.error("Submit error:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -178,8 +245,7 @@ export default function ContactSection({ id }) {
                     whileHover={{ y: -3, scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ duration: 0.1, ease: "linear" }}
-                    // className="w-11 h-11 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center text-zinc-400 hover:text-[#4CAF4F] hover:border-[#4CAF4F]/50 hover:bg-[#4CAF4F]/10 transition-all duration-300"
-                    className="w-10 h-10 2xl:w-12 2xl:h-12  3xl:w-16 3xl:h-16 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-[#4CAF4F] hover:border-[#4CAF4F]/50 transition-all duration-300"
+                    className="w-10 h-10 2xl:w-12 2xl:h-12  3xl:w-16 3xl:h-16 rounded-full border border-white/10 flex items-center justify-center text-zinc-400 hover:text-[#4CAF4F] hover:border-[#4CAF4F]/50 transition-all duration-300 will-change-transform"
                   >
                     {s.icon}
                   </motion.a>
@@ -273,8 +339,19 @@ export default function ContactSection({ id }) {
                         type: "email",
                         placeholder: "john@example.com",
                       },
+                      {
+                        name: "phone",
+                        label: "Phone / WhatsApp",
+                        type: "tel",
+                        placeholder: "+92 300 0000000",
+                        fullWidth: true,
+                      },
                     ].map((field) => (
-                      <div key={field.name} className="flex flex-col gap-2">
+                      <div
+                        key={field.name}
+                        // className="flex flex-col gap-2"
+                        className={`flex flex-col gap-2 ${field.fullWidth ? "sm:col-span-2" : ""}`}
+                      >
                         <label className="text-zinc-400 text-sm 3xl:text-lg font-medium">
                           {field.label}
                         </label>
@@ -294,6 +371,11 @@ export default function ContactSection({ id }) {
                                 : "border-white/10 hover:border-white/20"
                             }`}
                         />
+                        {errors[field.name] && (
+                          <p className="text-red-400 text-xs 3xl:text-base mt-1 flex items-center gap-1">
+                            <span>⚠</span> {errors[field.name]}
+                          </p>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -458,6 +540,11 @@ export default function ContactSection({ id }) {
                             : "border-white/10 hover:border-white/20"
                         }`}
                     />
+                    {errors.message && (
+                      <p className="text-red-400 text-xs 2xl:text-[14px] 3xl:text-base mt-1 flex items-center gap-1">
+                        <span>⚠</span> {errors.message}
+                      </p>
+                    )}
                   </div>
 
                   {/* Submit */}

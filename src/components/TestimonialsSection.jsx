@@ -61,6 +61,7 @@ export default function TestimonialsSection({ id }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
+              data-cursor="pointer"
               className="rounded-3xl cursor-pointer border border-white/10 bg-white/5 backdrop-blur-xl p-8 hover:border-[#4CAF4F]/30 transition-all duration-500 hover:-translate-y-2"
             >
               <div className="flex gap-1 mb-6">

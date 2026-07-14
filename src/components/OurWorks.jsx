@@ -1,49 +1,12 @@
 import { ArrowRight } from "lucide-react";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import ProjectModal from "./ProjectModal";
+import { lazy, Suspense } from "react";
+const ProjectModal = lazy(() => import("./ProjectModal"));
 import { useScrollTo } from "./hooks/useScrollTo";
 import { AnimatePresence } from "framer-motion";
 import { LayoutGroup } from "framer-motion";
 import { div } from "framer-motion/client";
-// const works = [
-//   {
-//     id: 1,
-//     title: "Web Development",
-//     description: "Modern, responsive and high-performance websites.",
-//     image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800",
-//   },
-//   {
-//     id: 2,
-//     title: "UI / UX Design",
-//     description: "Beautiful interfaces focused on user experience.",
-//     image: "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800",
-//   },
-//   {
-//     id: 3,
-//     title: "Brand Identity",
-//     description: "Creative branding and visual identity solutions.",
-//     image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=800",
-//   },
-//   {
-//     id: 4,
-//     title: "Mobile Apps",
-//     description: "Fast and intuitive Android & iOS applications.",
-//     image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800",
-//   },
-//   {
-//     id: 5,
-//     title: "E-Commerce",
-//     description: "Scalable online stores with premium experience.",
-//     image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800",
-//   },
-//   {
-//     id: 6,
-//     title: "SEO & Marketing",
-//     description: "Grow your business with digital marketing.",
-//     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800",
-//   },
-// ];
 
 const works = [
   {
@@ -156,6 +119,7 @@ export default function OurWorks({ id }) {
                       duration: 0.6,
                       delay: i * 0.1,
                     }}
+                    data-cursor="pointer"
                     className="h-full  group cursor-pointer overflow-hidden rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_15px_60px_rgba(0,0,0,.5)]  hover:border-[#4CAF4F]/50                
             hover:-translate-y-3      transition-all duration-500 ease-in "
                   >
@@ -204,11 +168,13 @@ export default function OurWorks({ id }) {
 
         <AnimatePresence mode="wait">
           {selectedProject && (
-            <ProjectModal
-              project={selectedProject}
-              onClose={() => setSelectedProject(null)}
-              onContact={handleContact}
-            />
+            <Suspense fallback={null}>
+              <ProjectModal
+                project={selectedProject}
+                onClose={() => setSelectedProject(null)}
+                onContact={handleContact}
+              />
+            </Suspense>
           )}
         </AnimatePresence>
       </LayoutGroup>

@@ -1,11 +1,10 @@
 import { useEffect, useRef } from "react";
-import { useLocation } from "react-router-dom";
+
 import Lenis from "lenis";
 
 export default function LenisProvider({ children }) {
   const lenisRef = useRef(null);
   const rafRef = useRef(null);
-  const location = useLocation();
 
   useEffect(() => {
     if (lenisRef.current) {
@@ -18,6 +17,10 @@ export default function LenisProvider({ children }) {
       smoothWheel: true,
       smoothTouch: false,
       autoRaf: false,
+    });
+
+    requestAnimationFrame(() => {
+      lenis.resize();
     });
 
     lenisRef.current = lenis;
@@ -37,7 +40,7 @@ export default function LenisProvider({ children }) {
       delete window.__lenis;
       lenis.destroy();
     };
-  }, [location.pathname]);
+  }, []);
 
   return children;
 }

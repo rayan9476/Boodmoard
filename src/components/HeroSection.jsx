@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Palette, Rocket, Star } from "lucide-react";
 import { useScrollTo } from "./hooks/useScrollTo";
+import { useCountUp } from "./hooks/useCountUp";
+import { useLoader } from "./context/LoaderContext";
 const slide = {
   title: "We Build Digital",
   subtitle: "Experiences That Convert",
@@ -14,10 +16,52 @@ const fadeUp = {
   show: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay: i * 0.15, ease: [0.25, 0.1, 0.25, 1] },
+    transition: {
+      duration: 0.7,
+      // delay: i * 0.15,
+
+      ease: [0.25, 0.1, 0.25, 1],
+    },
   }),
 };
 
+const imageVariant = {
+  hidden: {
+    opacity: 0,
+    x: 60,
+    scale: 0.96,
+  },
+  show: {
+    opacity: 1,
+    x: 0,
+    // scale: 1,
+    transition: {
+      duration: 0.9,
+      // delay: 0.5,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  },
+};
+
+const cardVariant = {
+  hidden: {
+    opacity: 0,
+    y: 35,
+    scale: 0.85,
+    filter: "blur(8px)",
+  },
+  show: (i) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.55,
+      delay: 0.8 + i * 0.18,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  }),
+};
 const scrollTo = useScrollTo();
 
 const handleClick = (e, target) => {
@@ -25,7 +69,22 @@ const handleClick = (e, target) => {
   scrollTo(target);
 };
 
+function HeroStat({ num, label, delay, loaded }) {
+  const { count } = useCountUp(num, 1800, false, delay, loaded);
+
+  return (
+    <div className="text-center lg:text-left">
+      <p className="text-white text-2xl xl:text-3xl 3xl:text-5xl font-bold tabular-nums">
+        {count || "0"}
+      </p>
+      <p className="text-zinc-500 text-sm 3xl:text-lg mt-1">{label}</p>
+    </div>
+  );
+}
+
 export default function HeroSection({ id }) {
+  const loaded = useLoader();
+
   return (
     <div
       id={id}
@@ -44,7 +103,8 @@ export default function HeroSection({ id }) {
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
-                animate="show"
+                // animate="show"
+                animate={loaded ? "show" : false}
                 custom={0}
                 className="inline-flex items-center gap-2 bg-[#4CAF4F]/10 border border-[#4CAF4F]/30 text-[#4CAF4F] text-xs 3xl:text-lg font-semibold px-4 py-2 rounded-full mb-6 uppercase tracking-widest "
               >
@@ -56,7 +116,8 @@ export default function HeroSection({ id }) {
               <motion.h1
                 variants={fadeUp}
                 initial="hidden"
-                animate="show"
+                // animate="show"
+                animate={loaded ? "show" : false}
                 custom={1}
                 className="text-[#FFFFFF]  text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[80px] 3xl:text-8xl font-bold leading-tight mb-4"
               >
@@ -68,7 +129,8 @@ export default function HeroSection({ id }) {
               <motion.p
                 variants={fadeUp}
                 initial="hidden"
-                animate="show"
+                // animate="show"
+                animate={loaded ? "show" : false}
                 custom={2}
                 className="text-gray-400  text-sm sm:text-base md:text-lg lg:text-xl 3xl:text-2xl max-w-xl mb-8 leading-relaxed"
               >
@@ -79,7 +141,8 @@ export default function HeroSection({ id }) {
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
-                animate="show"
+                // animate="show"
+                animate={loaded ? "show" : false}
                 custom={3}
                 className="flex gap-4 items-center justify-center lg:justify-start flex-wrap"
               >
@@ -114,36 +177,48 @@ export default function HeroSection({ id }) {
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
-                animate="show"
+                // animate="show"
+                animate={loaded ? "show" : false}
                 custom={4}
                 className="flex gap-10 mt-12 justify-center lg:justify-start"
               >
                 {[
-                  { num: "120+", label: "Projects Done" },
-                  { num: "48K", label: "Social Followers" },
-                  { num: "8+", label: "Years Experience" },
+                  { num: "120+", label: "Projects Done", delay: 500 },
+                  { num: "48K", label: "Social Followers", delay: 500 },
+                  { num: "18+", label: "Years Experience", delay: 500 },
                 ].map((stat) => (
-                  <div key={stat.label} className="text-center lg:text-left">
-                    <p className="text-white text-2xl xl:text-3xl 3xl:text-5xl font-bold">
-                      {stat.num}
-                    </p>
-                    <p className="text-zinc-500 text-sm 3xl:text-lg mt-1">
-                      {stat.label}
-                    </p>
-                  </div>
+                  // <div key={stat.label} className="text-center lg:text-left">
+                  //   <p className="text-white text-2xl xl:text-3xl 3xl:text-5xl font-bold">
+                  //     {stat.num}
+                  //   </p>
+                  //   <p className="text-zinc-500 text-sm 3xl:text-lg mt-1">
+                  //     {stat.label}
+                  //   </p>
+                  // </div>
+
+                  <HeroStat
+                    key={stat.label}
+                    num={stat.num}
+                    label={stat.label}
+                    delay={stat.delay}
+                    loaded={loaded}
+                  />
                 ))}
               </motion.div>
             </div>
 
             {/* Right side — floating cards visual */}
             <motion.div
-              initial={{ opacity: 0, x: 60 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{
-                duration: 0.9,
-                delay: 0.3,
-                ease: [0.25, 0.1, 0.25, 1],
-              }}
+              // initial={{ opacity: 0, x: 60 }}
+              // animate={{ opacity: 1, x: 0 }}
+              // transition={{
+              //   duration: 0.9,
+              //   delay: 0.3,
+              //   ease: [0.25, 0.1, 0.25, 1],
+              // }}
+              variants={imageVariant}
+              initial="hidden"
+              animate={loaded ? "show" : false}
               className="hidden lg:flex w-1/2 justify-center items-center relative"
             >
               {/* Main image card */}
@@ -159,11 +234,17 @@ export default function HeroSection({ id }) {
 
                 {/* Floating badge 1 */}
 
-                <div className="absolute -top-6 -left-10">
+                <motion.div
+                  variants={cardVariant}
+                  custom={0}
+                  animate={loaded ? "show" : false}
+                  className="absolute -top-6 -left-10"
+                >
                   <motion.div
                     animate={{ y: [0, -8, 0] }}
                     transition={{
                       duration: 3,
+                      delay: 1.45,
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}
@@ -185,17 +266,23 @@ export default function HeroSection({ id }) {
                       </div>
                     </div>
                   </motion.div>
-                </div>
+                </motion.div>
                 {/* Floating badge 2 */}
 
-                <div className="absolute -bottom-6 -right-10">
+                <motion.div
+                  variants={cardVariant}
+                  custom={1}
+                  animate={loaded ? "show" : false}
+                  className="absolute -bottom-6 -right-10"
+                >
                   <motion.div
                     animate={{ y: [0, 10, 0] }}
                     transition={{
                       duration: 3.5,
+                      delay: 1.6,
                       repeat: Infinity,
                       ease: "easeInOut",
-                      delay: 0.5,
+                      // delay: 0.5,
                     }}
                   >
                     <div className="floating-card border border-white/10 bg-white/2 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl transform-gpu will-change-transform">
@@ -215,18 +302,24 @@ export default function HeroSection({ id }) {
                       </div>
                     </div>
                   </motion.div>
-                </div>
+                </motion.div>
 
                 {/* Floating badge 3 */}
 
-                <div className="absolute top-1/2 -right-14">
+                <motion.div
+                  variants={cardVariant}
+                  animate={loaded ? "show" : false}
+                  custom={2}
+                  className="absolute top-1/2 -right-14"
+                >
                   <motion.div
                     animate={{ y: [0, -8, 0] }}
                     transition={{
                       duration: 4,
                       repeat: Infinity,
                       ease: "easeInOut",
-                      delay: 1,
+                      // delay: 1,
+                      delay: 1.75,
                     }}
                   >
                     <div className="floating-card border border-white/10 bg-white/2 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl transform-gpu will-change-transform">
@@ -244,7 +337,7 @@ export default function HeroSection({ id }) {
                       </div>
                     </div>
                   </motion.div>
-                </div>
+                </motion.div>
               </div>
             </motion.div>
           </div>

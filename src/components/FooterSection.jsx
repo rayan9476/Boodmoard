@@ -4,11 +4,13 @@ import {
   FaLinkedin,
   FaBehance,
   FaArrowUp,
+  FaFacebook,
 } from "react-icons/fa";
-import logo from "../assets/boodmoard-transparent-cropped.png";
+import logo from "../assets/nexlify-logo-transparent-cropped.png";
 import { motion } from "framer-motion";
 import { useScrollTo } from "./hooks/useScrollTo";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function FooterSection({ id }) {
   const scrollTo = useScrollTo();
@@ -32,7 +34,7 @@ export default function FooterSection({ id }) {
               alt="Boodmoard"
               className="h-10 2xl:h-14 3xl:h-18 w-auto mb-4 xl:mb-6 2xl:mb-8 3xl:mb-12"
             />
-            <p className="text-zinc-400  leading-7 max-w-sm 2xl:max-w-xl 3xl:max-w-2xl xl:mb-4 2xl:mb-6 3xl:mb-8 text-sm 2xl:text-lg 3xl:text-2xl">
+            <p className="text-zinc-400  leading-7 max-w-sm xl:max-w-md 2xl:max-w-xl 3xl:max-w-2xl xl:mb-4 2xl:mb-6 3xl:mb-8 text-sm xl:text-base 2xl:text-lg 3xl:text-2xl">
               Boodmoard is a creative digital agency building modern websites,
               bold brands, and high-converting digital products.
             </p>
@@ -51,7 +53,7 @@ export default function FooterSection({ id }) {
                   href: "#",
                 },
                 {
-                  icon: <FaBehance size={22} className="3xl:w-9 3xl:h-9" />,
+                  icon: <FaFacebook size={22} className="3xl:w-9 3xl:h-9" />,
                   href: "#",
                 },
               ].map((s, i) => (
@@ -67,63 +69,71 @@ export default function FooterSection({ id }) {
           </div>
 
           <div>
-            <h4 className="text-white font-semibold 2xl:text-lg 3xl:text-2xl mb-6">
+            <h4 className="text-white font-semibold xl:text-base 2xl:text-lg 3xl:text-2xl mb-6">
               Services
             </h4>
             <ul className="space-y-3">
               {[
-                "Web Development",
-                "UI/UX Design",
-                "Brand Identity",
-                "Mobile Apps",
-                "SEO & Marketing",
+                { label: "Web Development", target: "#services" },
+                { label: "UI/UX Design", target: "#services" },
+                { label: "Brand Identity", target: "#services" },
+                { label: "Mobile Apps", target: "#services" },
+                { label: "SEO & Marketing", target: "#services" },
               ].map((l) => (
-                <li key={l}>
-                  <a
-                    href="#"
-                    className="text-zinc-400 hover:text-[#4CAF4F] text-sm 2xl:text-base 3xl:text-lg transition-colors duration-200"
+                <li key={l.label}>
+                  <span
+                    data-cursor="pointer"
+                    onClick={(e) => handleClick(e, l.target)}
+                    className="text-zinc-400 cursor-pointer hover:text-[#4CAF4F] text-sm 2xl:text-base 3xl:text-lg transition-colors duration-200"
                   >
-                    {l}
-                  </a>
+                    {l.label}
+                  </span>
                 </li>
               ))}
             </ul>
           </div>
 
           <div>
-            <h4 className="text-white font-semibold 2xl:text-lg 3xl:text-2xl mb-6">
+            <h4 className="text-white font-semibold xl:text-base 2xl:text-lg 3xl:text-2xl mb-6">
               Company
             </h4>
             <ul className="space-y-3">
-              {["About Us", "Our Work", "Testimonials", "Blog", "Contact"].map(
-                (l) => (
-                  <li key={l}>
-                    <a
-                      href="#"
-                      className="text-zinc-400 hover:text-[#4CAF4F] text-sm 2xl:text-base 3xl:text-lg transition-colors duration-200"
-                    >
-                      {l}
-                    </a>
-                  </li>
-                ),
-              )}
+              {[
+                { label: "About Us", target: "#home" },
+                { label: "Our Work", target: "#works" },
+                { label: "Testimonials", target: "#testimonials" },
+                { label: "Contact", target: "#contact" },
+              ].map((l) => (
+                <li key={l.label}>
+                  <span
+                    data-cursor="pointer"
+                    onClick={(e) => handleClick(e, l.target)}
+                    className="text-zinc-400 cursor-pointer hover:text-[#4CAF4F] text-sm 2xl:text-base 3xl:text-lg transition-colors duration-200"
+                  >
+                    {l.label}
+                  </span>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-zinc-500 text-sm 2xl:text-xl 3xl:text-2xl">
+          <p className="text-zinc-500 text-sm xl:text-base 2xl:text-xl 3xl:text-2xl">
             © 2026 Boodmoard Creative Studio. All rights reserved.
           </p>
           <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Service"].map((l) => (
-              <a
-                key={l}
-                href="#"
-                className="text-zinc-500 hover:text-[#4CAF4F] text-sm 2xl:text-lg 3xl:text-xl transition-colors duration-200"
+            {[
+              { item: "Privacy Policy", href: "/privacy" },
+              { item: "Terms of Service", href: "/terms" },
+            ].map((l) => (
+              <Link
+                key={l.href}
+                to={l.href}
+                className="text-zinc-500 hover:text-[#4CAF4F] text-sm xl:text-base 2xl:text-lg 3xl:text-xl transition-colors duration-200"
               >
-                {l}
-              </a>
+                {l.item}
+              </Link>
             ))}
             <motion.button
               type="button"

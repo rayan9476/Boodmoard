@@ -1,7 +1,15 @@
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
+import { useScrollTo } from "./hooks/useScrollTo";
 
 export default function CTASection({ id }) {
+  const scrollTo = useScrollTo();
+
+  const handleClick = (e, target) => {
+    e.preventDefault();
+    scrollTo(target);
+  };
+
   return (
     <section
       id={id}
@@ -26,7 +34,7 @@ export default function CTASection({ id }) {
               transition={{ delay: 0.2 }}
               className="uppercase tracking-[5px] text-[#4CAF4F] text-sm  lg:text-base xl:text-lg 3xl:text-2xl font-medium mb-4"
             >
-              Let's Work Together
+              Start Today
             </motion.p>
 
             <motion.h2
@@ -59,6 +67,8 @@ export default function CTASection({ id }) {
               className="flex gap-4 justify-center flex-wrap"
             >
               <button
+                type="button"
+                onClick={(e) => handleClick(e, "#contact")}
                 className="bg-[#4CAF4F] hover:bg-[#43A047] text-white font-semibold px-10 py-4 rounded-sm flex items-center gap-3 hover:gap-5 transition-all duration-300  hover:shadow-[0_0_30px_rgba(76,175,79,0.4)] cursor-pointer  lg:text-lg  2xl:text-xl 3xl:text-2xl
               
                transform-gpu
@@ -70,7 +80,11 @@ export default function CTASection({ id }) {
                 <FaArrowRight />
               </button>
 
-              <button className="border border-white/20 hover:border-[#4CAF4F]/50 text-white font-semibold px-10 py-4 rounded-sm transition-all duration-300 cursor-pointer hover:text-[#4CAF4F] lg:text-lg  2xl:text-xl 3xl:text-2xl">
+              <button
+                type="button"
+                onClick={(e) => handleClick(e, "#works")}
+                className="border border-white/20 hover:border-[#4CAF4F]/50 text-white font-semibold px-10 py-4 rounded-sm transition-all duration-300 cursor-pointer hover:text-[#4CAF4F] lg:text-lg  2xl:text-xl 3xl:text-2xl"
+              >
                 View Our Work
               </button>
             </motion.div>

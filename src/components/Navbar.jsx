@@ -1,7 +1,7 @@
 import "hamburgers/dist/hamburgers.css";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import logo from "../assets/boodmoard-transparent-cropped.png";
+import logo from "../assets/nexlify-logo-transparent-cropped.png";
 import { useScrollTo } from "./hooks/useScrollTo";
 
 const navLinks = [
@@ -68,6 +68,7 @@ export default function Navbar() {
                 href={link.target}
                 onClick={(e) => handleClick(e, link.target)}
                 href={`#${link.label.toLowerCase()}`}
+                data-cursor="pointer"
                 className="text-zinc-400   cursor-pointer list-none hover:text-white text-sm xl:text-base 2xl:text-lg 3xl:text-2xl font-medium tracking-wide transition-colors duration-200 relative group"
               >
                 {link.label}
