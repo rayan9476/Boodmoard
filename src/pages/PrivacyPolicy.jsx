@@ -58,7 +58,7 @@ export default function PrivacyPolicy() {
               1. Who We Are
             </h2>
             <p className="xl:text-base 3xl:text-lg">
-              Boodmoard Creative Studio ("we", "our", "us") is a digital agency
+              Nexlify Creative Studio ("we", "our", "us") is a digital agency
               based in Karachi, Pakistan. We provide web development, UI/UX
               design, brand identity, and digital marketing services. This
               Privacy Policy explains how we collect, use, and protect your
@@ -172,7 +172,7 @@ export default function PrivacyPolicy() {
                 href="mailto:hello@boodmoard.com"
                 className="text-[#4CAF4F] hover:underline xl:text-base 3xl:text-lg"
               >
-                hello@boodmoard.com
+                hello@nexlify.com
               </a>
             </p>
           </div>

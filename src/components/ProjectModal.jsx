@@ -94,7 +94,7 @@ export default function ProjectModal({ project, onClose, onContact }) {
             </div>
 
             {/* Content */}
-            <div className="p-8">
+            <div className="p-2.5 md:p-8">
               <motion.h3
                 layoutId={`title-${project.id}`}
                 layout
@@ -174,10 +174,10 @@ export default function ProjectModal({ project, onClose, onContact }) {
                   onClose();
                   onContact();
                 }}
-                className="w-full 2xl:text-xl 3xl:text-2xl bg-[#4CAF4F] hover:bg-[#43A047] text-white font-semibold py-4 px-8 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 hover:scale-[1.02] cursor-pointer border-none shadow-[0_4px_20px_rgba(76,175,79,0.3)]"
+                className="w-full xs-text  text-sm 2xl:text-xl 3xl:text-2xl bg-[#4CAF4F] hover:bg-[#43A047] text-white font-semibold py-4 md:px-8 rounded-xl flex items-center justify-center xs-gap gap-3 transition-all duration-300 hover:scale-[1.02] cursor-pointer border-none shadow-[0_4px_20px_rgba(76,175,79,0.3)]"
               >
                 Interested in similar work? Let's talk
-                <FaArrowRight size={22} className="3xl:h-7 3xl:w-7" />
+                <FaArrowRight size={18} className="xs-w-h  3xl:h-7 3xl:w-7" />
               </motion.button>
             </div>
           </div>

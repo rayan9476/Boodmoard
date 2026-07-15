@@ -168,7 +168,7 @@ export default function InstagramSection({ id }) {
                     className="mt-6 cursor-pointer bg-[#4CAF4F] hover:bg-[#43A047] transition-all duration-200 ease-in text-white font-semibold 3xl:text-xl px-7 py-3 rounded-full flex items-center gap-2 hover:gap-3 mx-auto sm:mx-0  transform-gpu
     will-change-transform"
                   >
-                    View Profile <FaArrowRight size={22} />
+                    View Profile <FaArrowRight size={20} />
                   </motion.button>
                 </div>
               </div>
@@ -259,9 +259,9 @@ export default function InstagramSection({ id }) {
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => setVisibleCount((prev) => prev + 3)}
-                className="border cursor-pointer border-[#4CAF4F] text-[#4CAF4F] hover:bg-[#4CAF4F] hover:text-black transition-all duration-300 px-8 py-4 rounded-full font-semibold flex items-center gap-3 3xl:text-2xl"
+                className="border cursor-pointer border-[#4CAF4F] text-[#4CAF4F] hover:bg-[#4CAF4F] hover:text-black transition-all duration-300 px-8 py-4 rounded-full font-semibold flex items-center gap-3 2xl:text-xl 3xl:text-2xl"
               >
-                Explore More Reels <FaArrowRight size={22} />
+                Explore More Reels <FaArrowRight size={20} />
               </motion.button>
             ) : (
               <motion.a
@@ -272,7 +272,7 @@ export default function InstagramSection({ id }) {
                 rel="noreferrer"
                 className="border cursor-pointer border-[#4CAF4F] text-[#4CAF4F] hover:bg-[#4CAF4F] hover:text-black transition-all duration-300 px-8 py-4 rounded-full font-semibold flex items-center gap-3 3xl:text-2xl"
               >
-                View on Instagram <FaArrowRight size={22} />
+                View on Instagram <FaArrowRight size={20} />
               </motion.a>
             )}
           </div>

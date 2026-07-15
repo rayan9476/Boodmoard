@@ -69,21 +69,20 @@ export default function CTASection({ id }) {
               <button
                 type="button"
                 onClick={(e) => handleClick(e, "#contact")}
-                className="bg-[#4CAF4F] hover:bg-[#43A047] text-white font-semibold px-10 py-4 rounded-sm flex items-center gap-3 hover:gap-5 transition-all duration-300  hover:shadow-[0_0_30px_rgba(76,175,79,0.4)] cursor-pointer  lg:text-lg  2xl:text-xl 3xl:text-2xl
+                className="bg-[#4CAF4F] hover:bg-[#43A047] text-white font-semibold px-8 md:px-10 py-4  rounded-sm flex items-center gap-3 hover:gap-5 transition-all duration-300  hover:shadow-[0_0_30px_rgba(76,175,79,0.4)] cursor-pointer  lg:text-lg  2xl:text-xl 3xl:text-2xl
               
                transform-gpu
     will-change-transform
               "
               >
-                <span> Start a Project</span>
-
+                Start a Project
                 <FaArrowRight />
               </button>
 
               <button
                 type="button"
                 onClick={(e) => handleClick(e, "#works")}
-                className="border border-white/20 hover:border-[#4CAF4F]/50 text-white font-semibold px-10 py-4 rounded-sm transition-all duration-300 cursor-pointer hover:text-[#4CAF4F] lg:text-lg  2xl:text-xl 3xl:text-2xl"
+                className="border border-white/20 hover:border-[#4CAF4F]/50 text-white font-semibold px-10 py-4  rounded-sm transition-all duration-300 cursor-pointer hover:text-[#4CAF4F] lg:text-lg  2xl:text-xl 3xl:text-2xl"
               >
                 View Our Work
               </button>

@@ -1,12 +1,14 @@
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { Palette, Rocket, Star } from "lucide-react";
 import { useScrollTo } from "./hooks/useScrollTo";
 import { useCountUp } from "./hooks/useCountUp";
 import { useLoader } from "./context/LoaderContext";
+import { useRouteChangeStairs } from "./context/RouteChangeStairsContext";
+import { useEffect } from "react";
 const slide = {
   title: "We Build Digital",
   subtitle: "Experiences That Convert",
-  dsc: "Boodmoard is a creative agency crafting modern websites, bold brand identities, and high-performing digital products.",
+  dsc: " Nexlify is a creative agency crafting modern websites, bold brand identities, and high-performing digital products.",
   ata: "Our Work",
   cta: "Contact Us",
 };
@@ -18,7 +20,7 @@ const fadeUp = {
     y: 0,
     transition: {
       duration: 0.7,
-      // delay: i * 0.15,
+      // delay: i * 0.19,
 
       ease: [0.25, 0.1, 0.25, 1],
     },
@@ -83,7 +85,9 @@ function HeroStat({ num, label, delay, loaded }) {
 }
 
 export default function HeroSection({ id }) {
-  const loaded = useLoader();
+  const { loaded } = useLoader();
+
+  const { isLoaded } = useRouteChangeStairs();
 
   return (
     <div

@@ -44,7 +44,7 @@ export default function TermsOfService() {
             Terms of Service
           </h1>
           <p className="text-zinc-500 text-sm  xl:text-base 3xl:text-lg">
-            Last updated: January 2025
+            Last updated: July 2026
           </p>
           <div className="w-full h-px bg-white/10 mt-8" />
         </div>
@@ -67,7 +67,7 @@ export default function TermsOfService() {
               2. Our Services
             </h2>
             <p className="mb-4  xl:text-base 3xl:text-lg">
-              Boodmoard Creative Studio provides the following services:
+              Nexlify Creative Studio provides the following services:
             </p>
             <ul className="flex flex-col gap-2 ml-4">
               {[
@@ -111,7 +111,7 @@ export default function TermsOfService() {
               4. Intellectual Property
             </h2>
             <p className=" xl:text-base 3xl:text-lg">
-              Upon receipt of full payment, all custom work created by Boodmoard
+              Upon receipt of full payment, all custom work created by Nexlify
               for your project becomes your property. We retain the right to
               showcase the work in our portfolio unless you request otherwise in
               writing.
@@ -146,7 +146,7 @@ export default function TermsOfService() {
               7. Limitation of Liability
             </h2>
             <p className=" xl:text-base 3xl:text-lg">
-              Boodmoard Creative Studio is not liable for any indirect,
+              Nexlify Creative Studio is not liable for any indirect,
               incidental, or consequential damages arising from the use of our
               services or deliverables. Our total liability shall not exceed the
               amount paid for the specific project in question.
@@ -175,7 +175,7 @@ export default function TermsOfService() {
                 href="mailto:hello@boodmoard.com"
                 className="text-[#4CAF4F] hover:underline  xl:text-base 3xl:text-lg"
               >
-                hello@boodmoard.com
+                hello@nexlify.com
               </a>
             </p>
           </div>

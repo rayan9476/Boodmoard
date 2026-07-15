@@ -4,6 +4,7 @@ import CustomCursor from "../CustomCursor";
 import PageLoader from "./PageLoader";
 import { LoaderContext } from "../context/LoaderContext";
 import { useLocation } from "react-router-dom";
+import { RouteChangeStairsContext } from "../context/RouteChangeStairsContext";
 
 export default function GlobalUI({ children }) {
   const thumbRef = useRef(null);
@@ -13,6 +14,7 @@ export default function GlobalUI({ children }) {
   });
 
   const [loaded, setLoaded] = useState(false);
+  const [isLoaded, setisLoaded] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const location = useLocation();
 
@@ -36,7 +38,11 @@ export default function GlobalUI({ children }) {
         />
       </div>
 
-      <LoaderContext.Provider value={loaded}>{children}</LoaderContext.Provider>
+      <RouteChangeStairsContext.Provider value={{ isLoaded, setisLoaded }}>
+        <LoaderContext.Provider value={{ loaded }}>
+          {children}
+        </LoaderContext.Provider>
+      </RouteChangeStairsContext.Provider>
     </>
   );
 }

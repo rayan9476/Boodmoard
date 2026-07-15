@@ -32,10 +32,10 @@ export default function FooterSection({ id }) {
             <img
               src={logo}
               alt="Boodmoard"
-              className="h-10 2xl:h-14 3xl:h-18 w-auto mb-4 xl:mb-6 2xl:mb-8 3xl:mb-12"
+              className="w-[140px] xl:w-[160px]  3xl:w-[220px] w-auto mb-4 xl:mb-6 2xl:mb-8 3xl:mb-12"
             />
             <p className="text-zinc-400  leading-7 max-w-sm xl:max-w-md 2xl:max-w-xl 3xl:max-w-2xl xl:mb-4 2xl:mb-6 3xl:mb-8 text-sm xl:text-base 2xl:text-lg 3xl:text-2xl">
-              Boodmoard is a creative digital agency building modern websites,
+              Nexlify is a creative digital agency building modern websites,
               bold brands, and high-converting digital products.
             </p>
             <div className="flex gap-4 mt-6">
@@ -120,7 +120,7 @@ export default function FooterSection({ id }) {
 
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-zinc-500 text-sm xl:text-base 2xl:text-xl 3xl:text-2xl">
-            © 2026 Boodmoard Creative Studio. All rights reserved.
+            © 2026 Nexlify Creative Studio. All rights reserved.
           </p>
           <div className="flex gap-6">
             {[

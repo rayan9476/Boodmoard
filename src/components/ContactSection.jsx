@@ -16,8 +16,8 @@ const contactInfo = [
   {
     icon: <FaEnvelope size={22} className="3xl:w-7 3xl:h-7" />,
     label: "Email Us",
-    value: "hello@boodmoard.com",
-    href: "mailto:hello@boodmoard.com",
+    value: "hello@nexlify.com",
+    href: "mailto:hello@nexlify.com",
   },
   {
     icon: <FaPhone size={22} className="3xl:w-7 3xl:h-7" />,
@@ -581,7 +581,7 @@ export default function ContactSection({ id }) {
                     ) : (
                       <>
                         Send Message{" "}
-                        <FaArrowRight size={22} className="3xl:w-7 3xl:h-7" />
+                        <FaArrowRight size={18} className="3xl:w-7 3xl:h-7" />
                       </>
                     )}
                   </motion.button>

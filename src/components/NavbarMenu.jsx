@@ -1,28 +1,73 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 
-export default function NavbarMenu({ isMenuOpen, navLinks }) {
-  const [activeLink, setActiveLink] = useState(0);
+export default function NavbarMenu({ navLinks }) {
+  // const [activeLink, setActiveLink] = useState(0);
+
+  useEffect(() => {
+    const lenis = window.__lenis;
+    if (lenis) lenis.stop();
+    return () => {
+      if (lenis) lenis.start();
+    };
+  }, []);
   return (
-    <div
-      className={`fixed top-0 left-0 h-screen w-full bg-[#F5F7FA] z-40
-    transition-transform duration-500 ease-in-out
-    ${isMenuOpen ? "translate-y-0" : "-translate-y-full"}`}
+    // <div
+    //   className={`fixed top-0 left-0 h-screen w-full bg-[#F5F7FA] z-40
+    // transition-transform duration-500 ease-in-out
+    // ${isMenuOpen ? "translate-y-0" : "-translate-y-full"}`}
+    // >
+    //   <div className="nav-menu px-2 pt-32">
+    //     <ul className="flex flex-col gap-8 text-[#18191F] font-medium text-lg">
+    //       {navLinks.map((link, index) => (
+    //         <li
+    //           key={index}
+    //           className={`cursor-pointer transition-colors duration-200 ease-in  ${
+    //             activeLink === index ? "text-[#4CAF4F]" : "text-[#18191F]"
+    //           } hover:text-[#4CAF4F]`}
+    //           onClick={() => setActiveLink(index)}
+    //         >
+    //           {link}
+    //         </li>
+    //       ))}
+    //     </ul>
+    //   </div>
+    // </div>
+
+    <motion.div
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      // exit={{ opacity: 0, y: -20 }}
+      transition={{ duration: 0.3 }}
+      data-lenis-prevent
+      className="fixed inset-0 z-40 pt-16 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 lg:hidden"
     >
-      <div className="nav-menu px-2 pt-32">
-        <ul className="flex flex-col gap-8 text-[#18191F] font-medium text-lg">
-          {navLinks.map((link, index) => (
-            <li
-              key={index}
-              className={`cursor-pointer transition-colors duration-200 ease-in  ${
-                activeLink === index ? "text-[#4CAF4F]" : "text-[#18191F]"
-              } hover:text-[#4CAF4F]`}
-              onClick={() => setActiveLink(index)}
-            >
-              {link}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+      {navLinks.map((link, i) => (
+        <motion.a
+          key={link.label}
+          href={`#${link.label.toLowerCase()}`}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          transition={{ delay: i * 0.07 }}
+          onClick={() => setIsMenuOpen(false)}
+          className="text-white text-2xl  md:text-5xl font-bold hover:text-[#4CAF4F] transition-colors duration-200"
+        >
+          {link.label}
+        </motion.a>
+      ))}
+
+      <motion.a
+        href="#contact"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20 }}
+        transition={{ delay: navLinks.length * 0.07 }}
+        onClick={() => setIsMenuOpen(false)}
+        className=" bg-[#4CAF4F] text-white font-semibold px-10 py-4 rounded-sm text-lg md:text-2xl hover:bg-[#43A047] transition-all duration-300"
+      >
+        Get Started
+      </motion.a>
+    </motion.div>
   );
 }

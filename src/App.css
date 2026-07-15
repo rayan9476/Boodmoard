@@ -164,3 +164,24 @@ section::before {
   width: 30px !important;
   background-color: #ffffff !important;
 }
+
+@media (min-width: 320px) and (max-width: 374px) {
+  /* 320px - 374px */
+
+  .xs-text {
+    font-size: 12px;
+  }
+
+  .xs-b-text {
+    font-size: 10px;
+  }
+
+  .xs-w-h {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .xs-gap {
+    gap: 8px;
+  }
+}

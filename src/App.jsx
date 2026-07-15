@@ -1,20 +1,10 @@
 import "./App.css";
 import { lazy, Suspense } from "react";
-
-import Navbar from "./components/Navbar";
-import HeroSection from "./components/HeroSection";
-
-const Marquee = lazy(() => import("./components/MarqueeSection"));
-const ServicesSection = lazy(() => import("./components/ServicesSection"));
-const OurWorks = lazy(() => import("./components/OurWorks"));
-const TestimonialsSection = lazy(
-  () => import("./components/TestimonialsSection"),
-);
-const InstagramSection = lazy(() => import("./components/InstagramSection"));
-const CTASection = lazy(() => import("./components/CTASection"));
-const FooterSection = lazy(() => import("./components/FooterSection"));
-
-import ContactSection from "./components/ContactSection";
+import Navbar from "./components/Navbar.jsx";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.jsx"));
+const TermsOfService = lazy(() => import("./pages/TermsOfService.jsx"));
+import HomePage from "./pages/HomePage.jsx";
 
 function App() {
   return (
@@ -31,15 +21,12 @@ function App() {
         <div className="relative z-10">
           <Navbar />
           <main>
-            <HeroSection id="home" />
             <Suspense fallback={null}>
-              <ServicesSection id="services" />
-              <OurWorks id="works" />
-              <TestimonialsSection id="testimonials" />
-              <InstagramSection id="instagram" />
-              <CTASection id="FAQ" />
-              <ContactSection id="contact" />
-              <FooterSection id="footer" />
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
+                <Route path="/terms" element={<TermsOfService />} />
+              </Routes>
             </Suspense>
           </main>
         </div>
