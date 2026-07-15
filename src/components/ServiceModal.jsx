@@ -105,7 +105,7 @@ export default function ServiceModal({ service, onClose, onContact }) {
             </div>
 
             {/* Content  */}
-            <div className="p-8">
+            <div className="p-2.5 lg:p-8">
               {/* Title  */}
               <motion.h3
                 layoutId={`service-title-${service.id}`}
@@ -172,7 +172,7 @@ export default function ServiceModal({ service, onClose, onContact }) {
                       className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-xl px-4 py-3"
                     >
                       <div className="w-1.5 h-1.5 2xl:w-2.5 2xl:h-2.5 3xl:h-3 3xl:w-3 rounded-full bg-[#4CAF4F] flex-shrink-0" />
-                      <span className="text-zinc-300 text-sm 2xl:text-base 3xl:text-lg">
+                      <span className="text-zinc-300 text-xs lg:text-sm 2xl:text-base 3xl:text-lg">
                         {item}
                       </span>
                     </div>
@@ -213,7 +213,7 @@ export default function ServiceModal({ service, onClose, onContact }) {
                   onClose();
                   onContact();
                 }}
-                className="w-full 2xl:text-xl 3xl:text-2xl bg-[#4CAF4F] hover:bg-[#43A047] text-white font-semibold py-4 px-8 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 hover:scale-[1.02] cursor-pointer border-none shadow-[0_4px_20px_rgba(76,175,79,0.3)]"
+                className="w-full text-xs lg:text-sm 2xl:text-xl 3xl:text-2xl bg-[#4CAF4F] hover:bg-[#43A047] text-white font-semibold py-4 px-8 rounded-xl flex items-center justify-center gap-3 transition-all duration-300 hover:scale-[1.02] cursor-pointer border-none shadow-[0_4px_20px_rgba(76,175,79,0.3)]"
               >
                 Get Started with {service.title}
                 <FaArrowRight size={22} className="3xl:h-7 3xl:w-7" />
