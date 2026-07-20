@@ -7,7 +7,9 @@ import { useRouteChangeStairs } from "./context/RouteChangeStairsContext";
 import { useEffect } from "react";
 const slide = {
   title: "We Build Digital",
+
   subtitle: "Experiences That Convert",
+
   dsc: " Nexlify is a creative agency crafting modern websites, bold brand identities, and high-performing digital products.",
   ata: "Our Work",
   cta: "Contact Us",

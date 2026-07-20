@@ -16,77 +16,152 @@ const profile = {
   following: "612",
 };
 
+// const allReels = [
+//   {
+//     id: 1,
+//     thumbnail:
+//       "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
+//     duration: "0:24",
+//     views: "124K",
+//     video: "https://www.w3schools.com/html/mov_bbb.mp4",
+//   },
+//   {
+//     id: 2,
+//     thumbnail:
+//       "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80",
+//     duration: "0:18",
+//     views: "98K",
+//     video: "https://www.w3schools.com/html/movie.mp4",
+//   },
+//   {
+//     id: 3,
+//     thumbnail:
+//       "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80",
+//     duration: "0:36",
+//     views: "256K",
+//     video: "https://www.w3schools.com/html/mov_bbb.mp4",
+//   },
+//   {
+//     id: 4,
+//     thumbnail:
+//       "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=800&q=80",
+//     duration: "0:29",
+//     views: "41K",
+//     video: "https://www.w3schools.com/html/movie.mp4",
+//   },
+//   {
+//     id: 5,
+//     thumbnail:
+//       "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
+//     duration: "0:40",
+//     views: "72K",
+//     video: "https://www.w3schools.com/html/mov_bbb.mp4",
+//   },
+//   {
+//     id: 6,
+//     thumbnail:
+//       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+//     duration: "0:15",
+//     views: "188K",
+//     video: "https://www.w3schools.com/html/movie.mp4",
+//   },
+//   {
+//     id: 7,
+//     thumbnail:
+//       "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&q=80",
+//     duration: "0:22",
+//     views: "55K",
+//     video: "https://www.w3schools.com/html/mov_bbb.mp4",
+//   },
+//   {
+//     id: 8,
+//     thumbnail:
+//       "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
+//     duration: "0:31",
+//     views: "93K",
+//     video: "https://www.w3schools.com/html/movie.mp4",
+//   },
+//   {
+//     id: 9,
+//     thumbnail:
+//       "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
+//     duration: "0:19",
+//     views: "210K",
+//     video: "https://www.w3schools.com/html/mov_bbb.mp4",
+//   },
+// ];
+
 const allReels = [
   {
     id: 1,
     thumbnail:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
-    duration: "0:24",
-    views: "124K",
+      "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80",
+    duration: "0:28",
+    views: "248K",
     video: "https://www.w3schools.com/html/mov_bbb.mp4",
   },
   {
     id: 2,
     thumbnail:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80",
-    duration: "0:18",
-    views: "98K",
+      "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=80",
+    duration: "0:22",
+    views: "156K",
     video: "https://www.w3schools.com/html/movie.mp4",
   },
   {
     id: 3,
     thumbnail:
-      "https://images.unsplash.com/photo-1559028012-481c04fa702d?w=800&q=80",
-    duration: "0:36",
-    views: "256K",
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
+    duration: "0:35",
+    views: "421K",
     video: "https://www.w3schools.com/html/mov_bbb.mp4",
   },
   {
     id: 4,
     thumbnail:
-      "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=800&q=80",
-    duration: "0:29",
-    views: "41K",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80",
+    duration: "0:19",
+    views: "97K",
     video: "https://www.w3schools.com/html/movie.mp4",
   },
   {
     id: 5,
     thumbnail:
-      "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
-    duration: "0:40",
-    views: "72K",
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    duration: "0:31",
+    views: "315K",
     video: "https://www.w3schools.com/html/mov_bbb.mp4",
   },
   {
     id: 6,
     thumbnail:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-    duration: "0:15",
-    views: "188K",
+      "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&q=80",
+    duration: "0:26",
+    views: "182K",
     video: "https://www.w3schools.com/html/movie.mp4",
   },
   {
     id: 7,
     thumbnail:
-      "https://images.unsplash.com/photo-1504639725590-34d0984388bd?w=800&q=80",
-    duration: "0:22",
-    views: "55K",
+      "https://images.unsplash.com/photo-1516321497487-e288fb19713f?w=800&q=80",
+    duration: "0:17",
+    views: "74K",
     video: "https://www.w3schools.com/html/mov_bbb.mp4",
   },
   {
     id: 8,
     thumbnail:
-      "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
-    duration: "0:31",
-    views: "93K",
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80",
+    duration: "0:29",
+    views: "267K",
     video: "https://www.w3schools.com/html/movie.mp4",
   },
   {
     id: 9,
     thumbnail:
-      "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
-    duration: "0:19",
-    views: "210K",
+      "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&q=80",
+    duration: "0:24",
+    views: "138K",
     video: "https://www.w3schools.com/html/mov_bbb.mp4",
   },
 ];
