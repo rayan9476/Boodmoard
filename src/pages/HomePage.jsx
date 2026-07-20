@@ -9,10 +9,12 @@ const InstagramSection = lazy(() => import("../components/InstagramSection"));
 const CTASection = lazy(() => import("../components/CTASection"));
 const ContactSection = lazy(() => import("../components/ContactSection"));
 const FooterSection = lazy(() => import("../components/FooterSection"));
+import Navbar from "../components/Navbar";
 
 function HomePage() {
   return (
     <>
+      <Navbar />
       <HeroSection id="home" />
       <Suspense fallback={null}>
         <ServicesSection id="services" />

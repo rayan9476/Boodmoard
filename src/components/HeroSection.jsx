@@ -13,15 +13,91 @@ const slide = {
   cta: "Contact Us",
 };
 
+// const fadeUp = {
+//   hidden: { opacity: 0, y: 40 },
+//   show: (i = 0) => ({
+//     opacity: 1,
+//     y: 0,
+//     transition: {
+//       duration: 0.7,
+//       // delay: i * 0.19,
+
+//       ease: [0.25, 0.1, 0.25, 1],
+//     },
+//   }),
+// };
+
+// const fadeUp = {
+//   hidden: { opacity: 0, y: 40 },
+//   show: ({ index = 0, delay = 0 }) => ({
+//     opacity: 1,
+//     y: 0,
+//     transition: {
+//       duration: 0.7,
+//       delay: delay + index * 0.19,
+//       ease: [0.25, 0.1, 0.25, 1],
+//     },
+//   }),
+// };
+
+// const imageVariant = {
+//   hidden: {
+//     opacity: 0,
+//     x: 60,
+//     scale: 0.96,
+//   },
+//   show: {
+//     opacity: 1,
+//     x: 0,
+//     // scale: 1,
+//     transition: {
+//       duration: 0.9,
+//       // delay: 0.5,
+//       ease: [0.25, 0.1, 0.25, 1],
+//     },
+//   },
+// };
+
+// const imageVariant = {
+//   hidden: {
+//     opacity: 0,
+//     x: 60,
+//     scale: 0.96,
+//   },
+//   show: ({ delay = 0 }) => ({
+//     opacity: 1,
+//     x: 0,
+//     // scale: 1,
+//     transition: {
+//       duration: 0.9,
+//       delay,
+//       ease: [0.25, 0.1, 0.25, 1],
+//     },
+//   }),
+// };
+
 const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  show: (i = 0) => ({
+  hidden: {
+    opacity: 0,
+    y: 40,
+  },
+
+  show: (index = 0) => ({
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.7,
-      // delay: i * 0.19,
+      delay: index * 0.19,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  }),
 
+  routeShow: (index = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      delay: 0.5 + index * 0.19, // extra delay only on route change
       ease: [0.25, 0.1, 0.25, 1],
     },
   }),
@@ -33,17 +109,68 @@ const imageVariant = {
     x: 60,
     scale: 0.96,
   },
+
   show: {
     opacity: 1,
     x: 0,
     // scale: 1,
     transition: {
       duration: 0.9,
-      // delay: 0.5,
+      ease: [0.25, 0.1, 0.25, 1],
+    },
+  },
+
+  routeShow: {
+    opacity: 1,
+    x: 0,
+    // scale: 1,
+    transition: {
+      duration: 0.9,
+      delay: 0.7,
       ease: [0.25, 0.1, 0.25, 1],
     },
   },
 };
+
+// const cardVariant = {
+//   hidden: {
+//     opacity: 0,
+//     y: 35,
+//     scale: 0.85,
+//     filter: "blur(8px)",
+//   },
+//   show: (i) => ({
+//     opacity: 1,
+//     y: 0,
+//     scale: 1,
+//     filter: "blur(0px)",
+//     transition: {
+//       duration: 0.55,
+//       delay: 0.8 + i * 0.18,
+//       ease: [0.16, 1, 0.3, 1],
+//     },
+//   }),
+// };
+
+// const cardVariant = {
+//   hidden: {
+//     opacity: 0,
+//     y: 35,
+//     scale: 0.85,
+//     filter: "blur(8px)",
+//   },
+//   show: ({ index = 0, delay = 0 }) => ({
+//     opacity: 1,
+//     y: 0,
+//     scale: 1,
+//     filter: "blur(0px)",
+//     transition: {
+//       duration: 0.55,
+//       delay: delay + 0.8 + index * 0.18,
+//       ease: [0.16, 1, 0.3, 1],
+//     },
+//   }),
+// };
 
 const cardVariant = {
   hidden: {
@@ -52,18 +179,32 @@ const cardVariant = {
     scale: 0.85,
     filter: "blur(8px)",
   },
-  show: (i) => ({
+
+  show: (index = 0) => ({
     opacity: 1,
     y: 0,
     scale: 1,
     filter: "blur(0px)",
     transition: {
       duration: 0.55,
-      delay: 0.8 + i * 0.18,
+      delay: 0.8 + index * 0.18,
+      ease: [0.16, 1, 0.3, 1],
+    },
+  }),
+
+  routeShow: (index = 0) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.55,
+      delay: 1 + 0.8 + index * 0.18, // extra delay only on route change
       ease: [0.16, 1, 0.3, 1],
     },
   }),
 };
+
 const scrollTo = useScrollTo();
 
 const handleClick = (e, target) => {
@@ -71,8 +212,16 @@ const handleClick = (e, target) => {
   scrollTo(target);
 };
 
-function HeroStat({ num, label, delay, loaded }) {
-  const { count } = useCountUp(num, 1800, false, delay, loaded);
+function HeroStat({ num, label, delay, loaded, isLoaded, isRouteChanging }) {
+  const { count } = useCountUp(
+    num,
+    1800,
+    false,
+    delay,
+    loaded,
+    isLoaded,
+    isRouteChanging,
+  );
 
   return (
     <div className="text-center lg:text-left">
@@ -87,7 +236,7 @@ function HeroStat({ num, label, delay, loaded }) {
 export default function HeroSection({ id }) {
   const { loaded } = useLoader();
 
-  const { isLoaded } = useRouteChangeStairs();
+  const { isLoaded, isRouteChanging } = useRouteChangeStairs();
 
   return (
     <div
@@ -108,7 +257,8 @@ export default function HeroSection({ id }) {
                 variants={fadeUp}
                 initial="hidden"
                 // animate="show"
-                animate={loaded ? "show" : false}
+                // animate={loaded ? "show" : false}
+                animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                 custom={0}
                 className="inline-flex items-center gap-2 bg-[#4CAF4F]/10 border border-[#4CAF4F]/30 text-[#4CAF4F] text-xs 3xl:text-lg font-semibold px-4 py-2 rounded-full mb-6 uppercase tracking-widest "
               >
@@ -121,7 +271,8 @@ export default function HeroSection({ id }) {
                 variants={fadeUp}
                 initial="hidden"
                 // animate="show"
-                animate={loaded ? "show" : false}
+                // animate={loaded ? "show" : false}
+                animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                 custom={1}
                 className="text-[#FFFFFF]  text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[80px] 3xl:text-8xl font-bold leading-tight mb-4"
               >
@@ -134,7 +285,8 @@ export default function HeroSection({ id }) {
                 variants={fadeUp}
                 initial="hidden"
                 // animate="show"
-                animate={loaded ? "show" : false}
+                // animate={loaded ? "show" : false}
+                animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                 custom={2}
                 className="text-gray-400  text-sm sm:text-base md:text-lg lg:text-xl 3xl:text-2xl max-w-xl mb-8 leading-relaxed"
               >
@@ -146,7 +298,8 @@ export default function HeroSection({ id }) {
                 variants={fadeUp}
                 initial="hidden"
                 // animate="show"
-                animate={loaded ? "show" : false}
+                // animate={loaded ? "show" : false}
+                animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                 custom={3}
                 className="flex gap-4 items-center justify-center lg:justify-start flex-wrap"
               >
@@ -182,7 +335,8 @@ export default function HeroSection({ id }) {
                 variants={fadeUp}
                 initial="hidden"
                 // animate="show"
-                animate={loaded ? "show" : false}
+                // animate={loaded ? "show" : false}
+                animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                 custom={4}
                 className="flex gap-10 mt-12 justify-center lg:justify-start"
               >
@@ -206,6 +360,8 @@ export default function HeroSection({ id }) {
                     label={stat.label}
                     delay={stat.delay}
                     loaded={loaded}
+                    isLoaded={isLoaded}
+                    isRouteChanging={isRouteChanging}
                   />
                 ))}
               </motion.div>
@@ -222,7 +378,12 @@ export default function HeroSection({ id }) {
               // }}
               variants={imageVariant}
               initial="hidden"
-              animate={loaded ? "show" : false}
+              // animate={loaded ? "show" : false}
+              // animate={loaded || isLoaded ? "show" : false}
+              // custom={{
+              //   delay: isLoaded ? 0.7 : 0,
+              // }}
+              animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
               className="hidden lg:flex w-1/2 justify-center items-center relative"
             >
               {/* Main image card */}
@@ -240,8 +401,11 @@ export default function HeroSection({ id }) {
 
                 <motion.div
                   variants={cardVariant}
+                  // custom={0}
+                  // animate={loaded ? "show" : false}
+                  initial="hidden"
+                  animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                   custom={0}
-                  animate={loaded ? "show" : false}
                   className="absolute -top-6 -left-10"
                 >
                   <motion.div
@@ -275,8 +439,10 @@ export default function HeroSection({ id }) {
 
                 <motion.div
                   variants={cardVariant}
+                  // custom={1}
+                  initial="hidden"
+                  animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                   custom={1}
-                  animate={loaded ? "show" : false}
                   className="absolute -bottom-6 -right-10"
                 >
                   <motion.div
@@ -286,7 +452,6 @@ export default function HeroSection({ id }) {
                       delay: 1.6,
                       repeat: Infinity,
                       ease: "easeInOut",
-                      // delay: 0.5,
                     }}
                   >
                     <div className="floating-card border border-white/10 bg-white/2 rounded-2xl px-4 py-3 flex items-center gap-3 shadow-xl transform-gpu will-change-transform">
@@ -312,7 +477,9 @@ export default function HeroSection({ id }) {
 
                 <motion.div
                   variants={cardVariant}
-                  animate={loaded ? "show" : false}
+                  // animate={loaded ? "show" : false}
+                  initial="hidden"
+                  animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                   custom={2}
                   className="absolute top-1/2 -right-14"
                 >

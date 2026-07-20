@@ -15,12 +15,24 @@ export default function GlobalUI({ children }) {
 
   const [loaded, setLoaded] = useState(false);
   const [isLoaded, setisLoaded] = useState(false);
+  const [isRouteChanging, setIsRouteChanging] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
     setIsDesktop(window.matchMedia("(pointer: fine)").matches);
   }, []);
+
+  const isFirstRender = useRef(true);
+
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+
+    setIsRouteChanging(true);
+  }, [location.pathname]);
 
   return (
     <>
@@ -38,7 +50,9 @@ export default function GlobalUI({ children }) {
         />
       </div>
 
-      <RouteChangeStairsContext.Provider value={{ isLoaded, setisLoaded }}>
+      <RouteChangeStairsContext.Provider
+        value={{ isLoaded, setisLoaded, isRouteChanging, setIsRouteChanging }}
+      >
         <LoaderContext.Provider value={{ loaded }}>
           {children}
         </LoaderContext.Provider>

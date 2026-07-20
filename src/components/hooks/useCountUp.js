@@ -6,6 +6,8 @@ export function useCountUp(
   startOnView = true,
   delay = 0,
   loaded = true,
+  isLoaded = true,
+  isRouteChanging = false,
 ) {
   const [count, setCount] = useState(0);
   const [hasStarted, setHasStarted] = useState(false);
@@ -51,25 +53,152 @@ export function useCountUp(
     return duration;
   };
 
+  // useEffect(() => {
+  //   if (isRouteChanging) {
+  //     if (!isLoaded) return;
+  //   } else {
+  //     if (!loaded) return;
+  //   }
+
+  //   if (!startOnView) {
+  //     const timer = setTimeout(() => setHasStarted(true), delay);
+  //     return () => clearTimeout(timer);
+  //   }
+
+  //   const observer = new IntersectionObserver(
+  //     ([entry]) => {
+  //       if (entry.isIntersecting && !hasStarted) setHasStarted(true);
+  //     },
+  //     { threshold: 0.5 },
+  //   );
+
+  //   if (ref.current) observer.observe(ref.current);
+  //   return () => observer.disconnect();
+  // }, [hasStarted, startOnView, delay, loaded, isLoaded]);
+
   useEffect(() => {
-    if (!startOnView) {
-      const timer = setTimeout(() => setHasStarted(true), delay);
+    if (isRouteChanging) {
+      if (!isLoaded) return;
+
+      const timer = setTimeout(() => {
+        if (!startOnView) {
+          const timer = setTimeout(() => setHasStarted(true), 300);
+          return () => clearTimeout(timer);
+        }
+
+        const observer = new IntersectionObserver(
+          ([entry]) => {
+            if (entry.isIntersecting && !hasStarted) setHasStarted(true);
+          },
+          { threshold: 0.5 },
+        );
+
+        if (ref.current) observer.observe(ref.current);
+        return () => observer.disconnect();
+      }, delay);
+
       return () => clearTimeout(timer);
     }
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !hasStarted) setHasStarted(true);
-      },
-      { threshold: 0.5 },
-    );
+    if (!loaded) return;
 
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, [hasStarted, startOnView, delay]);
+    const timer = setTimeout(() => {
+      if (!startOnView) {
+        const timer = setTimeout(() => setHasStarted(true), 300);
+        return () => clearTimeout(timer);
+      }
+
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting && !hasStarted) setHasStarted(true);
+        },
+        { threshold: 0.5 },
+      );
+
+      if (ref.current) observer.observe(ref.current);
+      return () => observer.disconnect();
+    }, delay);
+
+    return () => clearTimeout(timer);
+  }, [hasStarted, startOnView, delay, loaded, isLoaded]);
+
+  // useEffect(() => {
+  //   if (isRouteChanging) {
+  //     if (!isLoaded) return;
+  //   } else {
+  //     if (!loaded) return;
+  //   }
+
+  //   if (!hasStarted) return;
+
+  //   const numericTarget = parseValue(target);
+  //   const smartDuration = getSmartDuration(target);
+  //   const startTime = performance.now();
+
+  //   const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+  //   let rafId;
+
+  //   const tick = (now) => {
+  //     const elapsed = now - startTime;
+  //     const progress = Math.min(elapsed / smartDuration, 1);
+
+  //     if (progress === 1) {
+  //       // always snap to exact target on completion — no stray frames
+  //       setCount(target);
+  //       return;
+  //     }
+
+  //     const current = easeOut(progress) * numericTarget;
+  //     setCount(formatValue(current, target));
+  //     rafId = requestAnimationFrame(tick);
+  //   };
+
+  //   rafId = requestAnimationFrame(tick);
+
+  //   return () => cancelAnimationFrame(rafId); // cleanup on unmount
+  // }, [hasStarted, target, duration, loaded, isLoaded]);
 
   useEffect(() => {
+    if (isRouteChanging) {
+      if (!isLoaded) return;
+
+      const timer = setTimeout(() => {
+        if (!hasStarted) return;
+
+        const numericTarget = parseValue(target);
+        const smartDuration = getSmartDuration(target);
+        const startTime = performance.now();
+
+        const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+
+        let rafId;
+
+        const tick = (now) => {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / smartDuration, 1);
+
+          if (progress === 1) {
+            // always snap to exact target on completion — no stray frames
+            setCount(target);
+            return;
+          }
+
+          const current = easeOut(progress) * numericTarget;
+          setCount(formatValue(current, target));
+          rafId = requestAnimationFrame(tick);
+        };
+
+        rafId = requestAnimationFrame(tick);
+
+        return () => cancelAnimationFrame(rafId); // cleanup on unmount
+      }, 300);
+
+      return () => clearTimeout(timer);
+    }
+
     if (!loaded) return;
+
     if (!hasStarted) return;
 
     const numericTarget = parseValue(target);
@@ -98,7 +227,7 @@ export function useCountUp(
     rafId = requestAnimationFrame(tick);
 
     return () => cancelAnimationFrame(rafId); // cleanup on unmount
-  }, [hasStarted, target, duration, loaded]);
+  }, [hasStarted, target, duration, loaded, isLoaded]);
 
   return { count, ref };
 }

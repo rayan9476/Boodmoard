@@ -58,7 +58,7 @@ export default function ProjectModal({ project, onClose, onContact }) {
         >
           <div
             data-lenis-prevent
-            className="h-full max-h-[80vh] md:max-h-[90vh] overflow-y-auto custom-scrollbar"
+            className="h-full  max-h-[80vh] md:max-h-[90vh] overflow-y-auto custom-scrollbar  "
           >
             {/* Close button */}
             <button
@@ -69,16 +69,16 @@ export default function ProjectModal({ project, onClose, onContact }) {
             </button>
 
             {/* Project image */}
-            <div className="relative h-64 md:h-80 3xl:h-96 overflow-hidden rounded-t-[32px]">
+            <div className="relative h-64 md:h-80 3xl:h-96 overflow-hidden ">
               <motion.img
                 layoutId={`image-${project.id}`}
-                layout
+                // layout
                 transition={TRANSITION}
                 src={project.image}
                 alt={project.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover "
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" />
+              {/* <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" /> */}
 
               {/* Category badge */}
               <div className="absolute top-5 left-5">

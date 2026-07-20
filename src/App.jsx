@@ -19,7 +19,7 @@ function App() {
         </div>
 
         <div className="relative z-10">
-          <Navbar />
+          {/* <Navbar /> */}
           <main>
             <Suspense fallback={null}>
               <Routes>

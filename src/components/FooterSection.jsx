@@ -32,7 +32,7 @@ export default function FooterSection({ id }) {
             <img
               src={logo}
               alt="Boodmoard"
-              className="w-[140px] xl:w-[160px]  3xl:w-[220px] w-auto mb-4 xl:mb-6 2xl:mb-8 3xl:mb-12"
+              className="w-[140px] xl:w-[160px]  3xl:w-[220px]  mb-4 xl:mb-6 2xl:mb-8 3xl:mb-12"
             />
             <p className="text-zinc-400  leading-7 max-w-sm xl:max-w-md 2xl:max-w-xl 3xl:max-w-2xl xl:mb-4 2xl:mb-6 3xl:mb-8 text-sm xl:text-base 2xl:text-lg 3xl:text-2xl">
               Nexlify is a creative digital agency building modern websites,
