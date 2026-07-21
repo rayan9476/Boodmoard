@@ -28,17 +28,17 @@ screenshots/
 
 ## Tech Stack
 
-| Technology | Version | Purpose |
-|---|---|---|
-| React | 18 | UI framework |
-| Vite | 5 | Build tool & dev server |
-| Tailwind CSS | v4 | Utility-first styling |
-| Framer Motion | latest | Page & component animations, layoutId morphing |
-| GSAP | latest | Custom cursor, route transition, ticker animations |
-| Lenis | latest | Smooth scroll |
-| React Router DOM | v6 | Client-side routing |
-| React Icons | latest | Icon library |
-| Google Sheets API | — | Contact form submissions via Apps Script |
+| Technology        | Version | Purpose                                            |
+| ----------------- | ------- | -------------------------------------------------- |
+| React             | 18      | UI framework                                       |
+| Vite              | 5       | Build tool & dev server                            |
+| Tailwind CSS      | v4      | Utility-first styling                              |
+| Framer Motion     | latest  | Page & component animations, layoutId morphing     |
+| GSAP              | latest  | Custom cursor, route transition, ticker animations |
+| Lenis             | latest  | Smooth scroll                                      |
+| React Router DOM  | v6      | Client-side routing                                |
+| React Icons       | latest  | Icon library                                       |
+| Google Sheets API | —       | Contact form submissions via Apps Script           |
 
 ---
 
@@ -65,7 +65,6 @@ nexlify-landing/
 │   │   │   └── RouteChangeStairsContext.jsx
 │   │   ├── Navbar.jsx
 │   │   ├── HeroSection.jsx
-│   │   ├── MarqueeSection.jsx
 │   │   ├── ServicesSection.jsx
 │   │   ├── ServiceModal.jsx
 │   │   ├── OurWorks.jsx
@@ -99,6 +98,7 @@ nexlify-landing/
 ## Features
 
 ### Animations & Interactions
+
 - **Page Loader** — GSAP timeline with logo reveal, progress bar, counter 0–100%, and staggered panel wipe on entry
 - **Route Transition** — Two-layer GSAP stair animation: green layer drops top to bottom right to left, black layer rises bottom to top right to left
 - **Custom Cursor** — GSAP ticker-driven smooth ball follower with hover scale effect, walks DOM tree to detect all `cursor: pointer` elements, disabled on touch devices
@@ -109,9 +109,9 @@ nexlify-landing/
 - **Scroll-triggered animations** — `whileInView` with `once: true` on all section cards and headings
 
 ### Sections
+
 - **Navbar** — Fixed with backdrop blur, smooth scroll to all sections, animated hamburger mobile menu
 - **Hero** — Animated tag badge, heading, description, dual CTA buttons, floating stat cards with count-up on load
-- **Marquee** — Dual-row infinite scroll logo strip, Framer Motion `useAnimationFrame` driven, both directions
 - **Services** — 6 service cards with Framer Motion layoutId expand modal, deliverables list, availability badge, order CTA
 - **Our Works** — 6 landing page type cards with layoutId expand modal, tech tags, deliverables, order CTA
 - **Testimonials** — 3 client review cards with star ratings and scroll-triggered entrance
@@ -121,6 +121,7 @@ nexlify-landing/
 - **Footer** — Logo, social links, service/company nav links all with smooth scroll
 
 ### Pages
+
 - `/` — Main landing page
 - `/privacy` — Privacy Policy
 - `/terms` — Terms of Service
@@ -179,20 +180,29 @@ npm install -D tailwindcss postcss autoprefixer @vitejs/plugin-react vite
 ```json
 {
   "dependencies": {
-    "framer-motion": "latest",
-    "gsap": "latest",
-    "lenis": "latest",
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
-    "react-icons": "latest",
-    "react-router-dom": "^6.0.0"
+    "@tailwindcss/vite": "^4.3.2",
+    "framer-motion": "^12.42.2",
+    "gsap": "^3.15.0",
+    "hamburgers": "^1.2.1",
+    "lenis": "^1.3.25",
+    "lucide-react": "^1.23.0",
+    "motion": "^12.42.2",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-icons": "^5.7.0",
+    "react-router-dom": "^7.18.1",
+    "tailwindcss": "^4.3.2"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "latest",
-    "autoprefixer": "latest",
-    "postcss": "latest",
-    "tailwindcss": "latest",
-    "vite": "latest"
+    "@eslint/js": "^10.0.1",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.3",
+    "eslint": "^10.6.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.3",
+    "globals": "^17.7.0",
+    "vite": "^8.1.1"
   }
 }
 ```
@@ -211,9 +221,9 @@ No `.env` file needed. The Google Apps Script URL is hardcoded in `ContactSectio
 
 ```javascript
 function doPost(e) {
-  const sheet = SpreadsheetApp
-    .openByUrl("YOUR_GOOGLE_SHEET_URL_HERE")
-    .getSheetByName("Sheet1");
+  const sheet = SpreadsheetApp.openByUrl(
+    "YOUR_GOOGLE_SHEET_URL_HERE",
+  ).getSheetByName("Sheet1");
 
   sheet.appendRow([
     e.parameter.name,
@@ -222,12 +232,12 @@ function doPost(e) {
     e.parameter.service,
     e.parameter.budget,
     e.parameter.message,
-    new Date()
+    new Date(),
   ]);
 
-  return ContentService
-    .createTextOutput(JSON.stringify({ success: true }))
-    .setMimeType(ContentService.MimeType.JSON);
+  return ContentService.createTextOutput(
+    JSON.stringify({ success: true }),
+  ).setMimeType(ContentService.MimeType.JSON);
 }
 ```
 
@@ -247,6 +257,7 @@ function doPost(e) {
 This template is designed to be re-skinned and delivered to any client in 3–5 days.
 
 **Step 1 — Clone and install**
+
 ```bash
 git clone https://github.com/yourusername/nexlify-landing.git my-client-project
 cd my-client-project
@@ -256,6 +267,7 @@ npm install
 **Step 2 — Swap agency name globally**
 
 Find & replace in your editor:
+
 ```
 Nexlify   →   Client Agency Name
 nexlify   →   clientagencyname
@@ -264,6 +276,7 @@ nexlify   →   clientagencyname
 **Step 3 — Replace logo**
 
 Drop client logo PNG into `src/assets/` and update the import in:
+
 - `Navbar.jsx`
 - `FooterSection.jsx`
 - `PageLoader.jsx`
@@ -273,6 +286,7 @@ Drop client logo PNG into `src/assets/` and update the import in:
 **Step 4 — Replace brand color**
 
 Find & replace globally:
+
 ```
 #4CAF4F   →   client primary color
 #43A047   →   client hover color (slightly darker)
@@ -282,22 +296,23 @@ Find & replace globally:
 
 All data lives at the top of each component as a plain array or object — no CMS needed:
 
-| What to change | File | Variable |
-|---|---|---|
-| Hero text & stats | `HeroSection.jsx` | `slide{}` + stats array |
-| Services list | `ServicesSection.jsx` | `services[]` |
-| Works / portfolio | `OurWorks.jsx` | `works[]` |
-| Testimonials | `TestimonialsSection.jsx` | `testimonials[]` |
-| Instagram profile | `InstagramSection.jsx` | `profile{}` |
-| Reel videos | `InstagramSection.jsx` | `allReels[]` |
-| Nav links | `Navbar.jsx` | `navLinks[]` |
-| Footer links | `FooterSection.jsx` | links arrays |
-| Contact info | `ContactSection.jsx` | `contactInfo[]` |
-| Social links | `FooterSection.jsx` | `socials[]` |
+| What to change    | File                      | Variable                |
+| ----------------- | ------------------------- | ----------------------- |
+| Hero text & stats | `HeroSection.jsx`         | `slide{}` + stats array |
+| Services list     | `ServicesSection.jsx`     | `services[]`            |
+| Works / portfolio | `OurWorks.jsx`            | `works[]`               |
+| Testimonials      | `TestimonialsSection.jsx` | `testimonials[]`        |
+| Instagram profile | `InstagramSection.jsx`    | `profile{}`             |
+| Reel videos       | `InstagramSection.jsx`    | `allReels[]`            |
+| Nav links         | `Navbar.jsx`              | `navLinks[]`            |
+| Footer links      | `FooterSection.jsx`       | links arrays            |
+| Contact info      | `ContactSection.jsx`      | `contactInfo[]`         |
+| Social links      | `FooterSection.jsx`       | `socials[]`             |
 
 **Step 6 — Update meta tags**
 
 In `index.html` update:
+
 - `<title>` — client name
 - `meta description` — client description
 - `og:url` — client live URL
@@ -319,6 +334,7 @@ npx vercel --prod
 **Step 9 — Hand over**
 
 Deliver:
+
 - Live Vercel URL
 - GitHub repo access
 - Google Sheet access
@@ -329,6 +345,7 @@ Deliver:
 ## Performance Optimizations Applied
 
 ### CSS
+
 - ✅ Removed `background-attachment: fixed` — was forcing full repaint on every scroll frame
 - ✅ Removed inline SVG noise filter from `body` — was re-evaluated on every paint
 - ✅ All blur overlay divs use `position: absolute` not `fixed` — renders once, not every frame
@@ -336,6 +353,7 @@ Deliver:
 - ✅ `-webkit-font-smoothing: antialiased` on all floating/animated elements — prevents text flicker
 
 ### JavaScript
+
 - ✅ All below-fold sections use `React.lazy` + `Suspense` — reduces initial JS bundle
 - ✅ Custom cursor uses `lastTarget` cache — `getComputedStyle` only runs on element change
 - ✅ Lenis `autoRaf: true` — single clean RAF loop, no double-ticking
@@ -344,6 +362,7 @@ Deliver:
 - ✅ `overwrite: "auto"` on all GSAP tweens — prevents conflicting animations stacking
 
 ### Images & Media
+
 - ✅ All Unsplash images use `?w=800` — prevents loading full resolution unnecessarily
 - ✅ Video modal uses `poster` attribute — shows thumbnail while video loads
 - ✅ Reel videos use Pexels CDN — agency-relevant stock clips, no placeholder content
@@ -354,32 +373,32 @@ Deliver:
 
 ### High Priority ❌
 
-| Task | How |
-|---|---|
-| Replace stock images | Use client's real work screenshots hosted on [Cloudinary](https://cloudinary.com) free tier |
-| Replace stock videos | Upload real agency reels to Cloudinary, replace Pexels URLs |
-| Real Instagram integration | Replace hardcoded reels with [Behold.so](https://behold.so) for auto-syncing real posts |
-| Real favicon | Export logo icon at 32×32 and 192×192 PNG |
-| Real OG image | Create 1200×630px image in Canva with logo + tagline |
-| Real testimonials | Replace placeholder reviews with real client feedback |
+| Task                       | How                                                                                         |
+| -------------------------- | ------------------------------------------------------------------------------------------- |
+| Replace stock images       | Use client's real work screenshots hosted on [Cloudinary](https://cloudinary.com) free tier |
+| Replace stock videos       | Upload real agency reels to Cloudinary, replace Pexels URLs                                 |
+| Real Instagram integration | Replace hardcoded reels with [Behold.so](https://behold.so) for auto-syncing real posts     |
+| Real favicon               | Export logo icon at 32×32 and 192×192 PNG                                                   |
+| Real OG image              | Create 1200×630px image in Canva with logo + tagline                                        |
+| Real testimonials          | Replace placeholder reviews with real client feedback                                       |
 
 ### Medium Priority ⚠️
 
-| Task | How |
-|---|---|
-| Form spam protection | Add honeypot field or [hCaptcha](https://www.hcaptcha.com) |
-| Form error state | Show error message if Google Sheets submission fails |
-| Skeleton loaders | Replace `Suspense fallback={null}` with skeleton UI for slow connections |
-| Compress logo | Run through [Squoosh](https://squoosh.app) → convert to WebP (~70% smaller) |
+| Task                 | How                                                                         |
+| -------------------- | --------------------------------------------------------------------------- |
+| Form spam protection | Add honeypot field or [hCaptcha](https://www.hcaptcha.com)                  |
+| Form error state     | Show error message if Google Sheets submission fails                        |
+| Skeleton loaders     | Replace `Suspense fallback={null}` with skeleton UI for slow connections    |
+| Compress logo        | Run through [Squoosh](https://squoosh.app) → convert to WebP (~70% smaller) |
 
 ### Lower Priority 💡
 
-| Task | How |
-|---|---|
-| Analytics | Add [Plausible](https://plausible.io) or Google Analytics |
-| Scroll progress bar | Thin green line at top showing scroll depth |
-| 404 page | Add `<Route path="*" element={<NotFound />} />` |
-| Blog section | 2–3 posts dramatically improve SEO for agency keywords |
+| Task                | How                                                       |
+| ------------------- | --------------------------------------------------------- |
+| Analytics           | Add [Plausible](https://plausible.io) or Google Analytics |
+| Scroll progress bar | Thin green line at top showing scroll depth               |
+| 404 page            | Add `<Route path="*" element={<NotFound />} />`           |
+| Blog section        | 2–3 posts dramatically improve SEO for agency keywords    |
 
 ---
 
@@ -404,6 +423,7 @@ npm run build
 ```
 
 Add `public/_redirects` for React Router to work:
+
 ```
 /*    /index.html   200
 ```
@@ -412,12 +432,12 @@ Add `public/_redirects` for React Router to work:
 
 ## Browser Support
 
-| Browser | Support | Notes |
-|---|---|---|
-| Chrome 90+ | ✅ Full | — |
-| Firefox 88+ | ✅ Full | — |
-| Safari 14+ | ✅ Full | — |
-| Edge 90+ | ✅ Full | — |
+| Browser       | Support | Notes                       |
+| ------------- | ------- | --------------------------- |
+| Chrome 90+    | ✅ Full | —                           |
+| Firefox 88+   | ✅ Full | —                           |
+| Safari 14+    | ✅ Full | —                           |
+| Edge 90+      | ✅ Full | —                           |
 | Mobile Chrome | ✅ Full | Custom cursor auto-disabled |
 | Mobile Safari | ✅ Full | Custom cursor auto-disabled |
 
@@ -437,6 +457,7 @@ Add `public/_redirects` for React Router to work:
 ## License
 
 This project is a commercial template for selling web development services. You may:
+
 - ✅ Use for client projects
 - ✅ Modify and rebrand freely
 - ✅ Sell websites built from this template
@@ -457,6 +478,7 @@ Built by **Rayyan** — Frontend Developer based in Karachi, Pakistan.
 ## Changelog
 
 ### v1.0.0 — Initial Release
+
 - Hero with GSAP count-up and Framer Motion entrance animations
 - Services section with layoutId modal expand
 - Works section with project type modals and order CTA
