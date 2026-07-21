@@ -1,6 +1,6 @@
 import "./App.css";
 import { lazy, Suspense } from "react";
-import Navbar from "./components/Navbar.jsx";
+import Navbar from "./components/common/Navbar.jsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy.jsx"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService.jsx"));
@@ -19,7 +19,6 @@ function App() {
         </div>
 
         <div className="relative z-10">
-          {/* <Navbar /> */}
           <main>
             <Suspense fallback={null}>
               <Routes>

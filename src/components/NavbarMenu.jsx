@@ -1,9 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 
 export default function NavbarMenu({ navLinks }) {
-  // const [activeLink, setActiveLink] = useState(0);
-
   useEffect(() => {
     const lenis = window.__lenis;
     if (lenis) lenis.stop();
@@ -12,32 +10,9 @@ export default function NavbarMenu({ navLinks }) {
     };
   }, []);
   return (
-    // <div
-    //   className={`fixed top-0 left-0 h-screen w-full bg-[#F5F7FA] z-40
-    // transition-transform duration-500 ease-in-out
-    // ${isMenuOpen ? "translate-y-0" : "-translate-y-full"}`}
-    // >
-    //   <div className="nav-menu px-2 pt-32">
-    //     <ul className="flex flex-col gap-8 text-[#18191F] font-medium text-lg">
-    //       {navLinks.map((link, index) => (
-    //         <li
-    //           key={index}
-    //           className={`cursor-pointer transition-colors duration-200 ease-in  ${
-    //             activeLink === index ? "text-[#4CAF4F]" : "text-[#18191F]"
-    //           } hover:text-[#4CAF4F]`}
-    //           onClick={() => setActiveLink(index)}
-    //         >
-    //           {link}
-    //         </li>
-    //       ))}
-    //     </ul>
-    //   </div>
-    // </div>
-
     <motion.div
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
-      // exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
       data-lenis-prevent
       className="fixed inset-0 z-40 pt-16 bg-black/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8 lg:hidden"

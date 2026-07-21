@@ -8,8 +8,8 @@ const TestimonialsSection = lazy(
 const InstagramSection = lazy(() => import("../components/InstagramSection"));
 const CTASection = lazy(() => import("../components/CTASection"));
 const ContactSection = lazy(() => import("../components/ContactSection"));
-const FooterSection = lazy(() => import("../components/FooterSection"));
-import Navbar from "../components/Navbar";
+const Footer = lazy(() => import("../components/common/Footer"));
+import Navbar from "../components/common/Navbar";
 
 function HomePage() {
   return (
@@ -23,7 +23,7 @@ function HomePage() {
         <InstagramSection id="instagram" />
         <CTASection id="FAQ" />
         <ContactSection id="contact" />
-        <FooterSection id="footer" />
+        <Footer id="footer" />
       </Suspense>
     </>
   );

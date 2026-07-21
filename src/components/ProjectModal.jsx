@@ -78,7 +78,6 @@ export default function ProjectModal({ project, onClose, onContact }) {
                 alt={project.title}
                 className="w-full h-full object-cover "
               />
-              {/* <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-transparent to-transparent" /> */}
 
               {/* Category badge */}
               <div className="absolute top-5 left-5">

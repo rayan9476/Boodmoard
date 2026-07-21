@@ -215,9 +215,6 @@ export default function ServicesSection({ id }) {
                       >
                         {s.desc}
                       </motion.p>
-                      {/* <div className="mt-6 text-[#4CAF4F] text-sm font-medium flex items-center gap-2 group-hover:gap-3 transition-all duration-300">
-                    Learn more <span>→</span>
-                  </div> */}
 
                       <button className="mt-6 cursor-pointer text-[#4CAF4F] font-medium lg:text-xl 3xl:text-2xl flex items-center gap-1 group-hover:gap-3 transition-all duration-300">
                         Learn more

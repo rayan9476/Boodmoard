@@ -6,9 +6,9 @@ import {
   FaArrowUp,
   FaFacebook,
 } from "react-icons/fa";
-import logo from "../assets/nexlify-logo-transparent-bg.png";
+import logo from "../../assets/nexlify-logo-transparent-bg.png";
 import { motion } from "framer-motion";
-import { useScrollTo } from "./hooks/useScrollTo";
+import { useScrollTo } from "../hooks/useScrollTo";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 

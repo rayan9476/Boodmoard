@@ -15,69 +15,6 @@ const slide = {
   cta: "Contact Us",
 };
 
-// const fadeUp = {
-//   hidden: { opacity: 0, y: 40 },
-//   show: (i = 0) => ({
-//     opacity: 1,
-//     y: 0,
-//     transition: {
-//       duration: 0.7,
-//       // delay: i * 0.19,
-
-//       ease: [0.25, 0.1, 0.25, 1],
-//     },
-//   }),
-// };
-
-// const fadeUp = {
-//   hidden: { opacity: 0, y: 40 },
-//   show: ({ index = 0, delay = 0 }) => ({
-//     opacity: 1,
-//     y: 0,
-//     transition: {
-//       duration: 0.7,
-//       delay: delay + index * 0.19,
-//       ease: [0.25, 0.1, 0.25, 1],
-//     },
-//   }),
-// };
-
-// const imageVariant = {
-//   hidden: {
-//     opacity: 0,
-//     x: 60,
-//     scale: 0.96,
-//   },
-//   show: {
-//     opacity: 1,
-//     x: 0,
-//     // scale: 1,
-//     transition: {
-//       duration: 0.9,
-//       // delay: 0.5,
-//       ease: [0.25, 0.1, 0.25, 1],
-//     },
-//   },
-// };
-
-// const imageVariant = {
-//   hidden: {
-//     opacity: 0,
-//     x: 60,
-//     scale: 0.96,
-//   },
-//   show: ({ delay = 0 }) => ({
-//     opacity: 1,
-//     x: 0,
-//     // scale: 1,
-//     transition: {
-//       duration: 0.9,
-//       delay,
-//       ease: [0.25, 0.1, 0.25, 1],
-//     },
-//   }),
-// };
-
 const fadeUp = {
   hidden: {
     opacity: 0,
@@ -133,46 +70,6 @@ const imageVariant = {
     },
   },
 };
-
-// const cardVariant = {
-//   hidden: {
-//     opacity: 0,
-//     y: 35,
-//     scale: 0.85,
-//     filter: "blur(8px)",
-//   },
-//   show: (i) => ({
-//     opacity: 1,
-//     y: 0,
-//     scale: 1,
-//     filter: "blur(0px)",
-//     transition: {
-//       duration: 0.55,
-//       delay: 0.8 + i * 0.18,
-//       ease: [0.16, 1, 0.3, 1],
-//     },
-//   }),
-// };
-
-// const cardVariant = {
-//   hidden: {
-//     opacity: 0,
-//     y: 35,
-//     scale: 0.85,
-//     filter: "blur(8px)",
-//   },
-//   show: ({ index = 0, delay = 0 }) => ({
-//     opacity: 1,
-//     y: 0,
-//     scale: 1,
-//     filter: "blur(0px)",
-//     transition: {
-//       duration: 0.55,
-//       delay: delay + 0.8 + index * 0.18,
-//       ease: [0.16, 1, 0.3, 1],
-//     },
-//   }),
-// };
 
 const cardVariant = {
   hidden: {
@@ -245,10 +142,6 @@ export default function HeroSection({ id }) {
       id={id}
       className="relative w-full py-16 lg:py-28 overflow-hidden  px-[var(--section-padding-x)] lg:px-[var(--section-padding-lg)] xl:px-[var(--section-padding-xl)]"
     >
-      {/* Background glow */}
-      {/* <div className="absolute top-[-200px] left-[-100px] w-[600px] h-[600px] bg-[#4CAF4F]/10 rounded-full blur-[120px] pointer-events-none" /> */}
-      {/* <div className="absolute bottom-[-100px] right-[-100px] w-[400px] h-[400px] bg-[#4CAF4F]/8 rounded-full blur-[100px] pointer-events-none" /> */}
-
       <div className="w-full  max-w-7xl  2mxl:max-w-full mx-auto ">
         <div className="relative w-full min-h-[85vh] flex items-center">
           <div className="flex flex-col lg:flex-row gap-4 md:gap-12 lg:gap-0 items-center justify-between w-full">
@@ -258,8 +151,6 @@ export default function HeroSection({ id }) {
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
-                // animate="show"
-                // animate={loaded ? "show" : false}
                 animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                 custom={0}
                 className="inline-flex items-center gap-2 bg-[#4CAF4F]/10 border border-[#4CAF4F]/30 text-[#4CAF4F] text-xs 3xl:text-lg font-semibold px-4 py-2 rounded-full mb-6 uppercase tracking-widest "
@@ -272,8 +163,6 @@ export default function HeroSection({ id }) {
               <motion.h1
                 variants={fadeUp}
                 initial="hidden"
-                // animate="show"
-                // animate={loaded ? "show" : false}
                 animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                 custom={1}
                 className="text-[#FFFFFF]  text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 2xl:text-[80px] 3xl:text-8xl font-bold leading-tight mb-4"
@@ -286,8 +175,6 @@ export default function HeroSection({ id }) {
               <motion.p
                 variants={fadeUp}
                 initial="hidden"
-                // animate="show"
-                // animate={loaded ? "show" : false}
                 animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                 custom={2}
                 className="text-gray-400  text-sm sm:text-base md:text-lg lg:text-xl 3xl:text-2xl max-w-xl mb-8 leading-relaxed"
@@ -299,16 +186,10 @@ export default function HeroSection({ id }) {
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
-                // animate="show"
-                // animate={loaded ? "show" : false}
                 animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                 custom={3}
                 className="flex gap-4 items-center justify-center lg:justify-start flex-wrap"
               >
-                {/* <button className="bg-[#4CAF4F] hover:bg-[#43A047] active:scale-95 text-white font-semibold text-sm sm:text-base 3xl:text-3xl px-8 py-4 rounded-sm tracking-wide transition-all duration-300 hover:scale-105 cursor-pointer">
-                  {slide.ata}
-                </button> */}
-
                 <button
                   type="button"
                   onClick={(e) => handleClick(e, "#works")}
@@ -336,8 +217,6 @@ export default function HeroSection({ id }) {
               <motion.div
                 variants={fadeUp}
                 initial="hidden"
-                // animate="show"
-                // animate={loaded ? "show" : false}
                 animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                 custom={4}
                 className="flex gap-10 mt-12 justify-center lg:justify-start"
@@ -347,15 +226,6 @@ export default function HeroSection({ id }) {
                   { num: "48K", label: "Social Followers", delay: 500 },
                   { num: "18+", label: "Years Experience", delay: 500 },
                 ].map((stat) => (
-                  // <div key={stat.label} className="text-center lg:text-left">
-                  //   <p className="text-white text-2xl xl:text-3xl 3xl:text-5xl font-bold">
-                  //     {stat.num}
-                  //   </p>
-                  //   <p className="text-zinc-500 text-sm 3xl:text-lg mt-1">
-                  //     {stat.label}
-                  //   </p>
-                  // </div>
-
                   <HeroStat
                     key={stat.label}
                     num={stat.num}
@@ -371,20 +241,8 @@ export default function HeroSection({ id }) {
 
             {/* Right side — floating cards visual */}
             <motion.div
-              // initial={{ opacity: 0, x: 60 }}
-              // animate={{ opacity: 1, x: 0 }}
-              // transition={{
-              //   duration: 0.9,
-              //   delay: 0.3,
-              //   ease: [0.25, 0.1, 0.25, 1],
-              // }}
               variants={imageVariant}
               initial="hidden"
-              // animate={loaded ? "show" : false}
-              // animate={loaded || isLoaded ? "show" : false}
-              // custom={{
-              //   delay: isLoaded ? 0.7 : 0,
-              // }}
               animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
               className="hidden lg:flex w-1/2 justify-center items-center relative"
             >
@@ -409,8 +267,6 @@ export default function HeroSection({ id }) {
 
                 <motion.div
                   variants={cardVariant}
-                  // custom={0}
-                  // animate={loaded ? "show" : false}
                   initial="hidden"
                   animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                   custom={0}
@@ -447,7 +303,6 @@ export default function HeroSection({ id }) {
 
                 <motion.div
                   variants={cardVariant}
-                  // custom={1}
                   initial="hidden"
                   animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                   custom={1}
@@ -485,7 +340,6 @@ export default function HeroSection({ id }) {
 
                 <motion.div
                   variants={cardVariant}
-                  // animate={loaded ? "show" : false}
                   initial="hidden"
                   animate={isLoaded ? "routeShow" : loaded ? "show" : "hidden"}
                   custom={2}

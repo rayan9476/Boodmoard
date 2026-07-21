@@ -33,41 +33,6 @@ export default function PageLoader({ play, onComplete }) {
         },
       });
 
-      // // logo
-      // tl.fromTo(
-      //   logo,
-      //   { opacity: 0, y: 10, overwrite: "auto" },
-      //   {
-      //     opacity: 1,
-      //     y: 0,
-      //     duration: 0.6,
-      //     ease: "power3.out",
-      //     overwrite: "auto",
-      //   },
-      // )
-
-      //   // text
-      //   .fromTo(
-      //     text,
-      //     { opacity: 0, y: 10, overwrite: "auto" },
-      //     {
-      //       opacity: 1,
-      //       y: 0,
-      //       duration: 0.5,
-      //       ease: "power2.out",
-      //       overwrite: "auto",
-      //     },
-      //     "-=0.2",
-      //   )
-
-      //   //  progressBar
-      //   .fromTo(
-      //     progressBar,
-      //     { scaleX: 0, overwrite: "auto" },
-      //     { scaleX: 1, duration: 1.4, ease: "power2.inOut", overwrite: "auto" },
-      //     "-=0.1",
-      //   )
-
       tl.to(logo, {
         opacity: 1,
         y: 0,
@@ -197,7 +162,6 @@ export default function PageLoader({ play, onComplete }) {
               }}
               ref={progressBarRef}
               className="h-full bg-[#4CAF4F] origin-left"
-              // style={{ transform: "scaleX(0)" }}
             />
           </div>
 

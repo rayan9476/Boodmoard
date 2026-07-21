@@ -9,7 +9,6 @@ export function useCustomCursor(dotRef, ballRef) {
     const mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
-    // cache last target — avoid getComputedStyle on every pixel
     let lastTarget = null;
 
     const onMouseMove = (e) => {
@@ -23,7 +22,6 @@ export function useCustomCursor(dotRef, ballRef) {
       if (e.target !== lastTarget) {
         lastTarget = e.target;
 
-        // walk up DOM tree until we find a hoverable element or hit body
         let el = e.target;
         let isHoverable = false;
 
