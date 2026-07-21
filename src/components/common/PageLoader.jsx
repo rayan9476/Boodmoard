@@ -1,6 +1,6 @@
 import { useEffect, useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
-import logo from "../../assets/nexlify-logo-transparent-cropped.png";
+import logo from "../../assets/nexlify-logo-transparent-bg.png";
 import { useLocation } from "react-router-dom";
 
 export default function PageLoader({ play, onComplete }) {
@@ -171,7 +171,7 @@ export default function PageLoader({ play, onComplete }) {
             opacity: 0,
             transform: "translateY(80px)",
           }}
-          className="h-10 lg:h-16  3xl:h-20 w-auto opacity-0 "
+          className="h-10 lg:h-16 2xl:h-20  3xl:h-24 w-auto opacity-0 "
         />
 
         {/* Tagline */}

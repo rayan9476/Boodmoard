@@ -6,7 +6,7 @@ import {
   FaArrowUp,
   FaFacebook,
 } from "react-icons/fa";
-import logo from "../assets/nexlify-logo-transparent-cropped.png";
+import logo from "../assets/nexlify-logo-transparent-bg.png";
 import { motion } from "framer-motion";
 import { useScrollTo } from "./hooks/useScrollTo";
 import { useState } from "react";
@@ -31,7 +31,7 @@ export default function FooterSection({ id }) {
           <div className="md:col-span-2">
             <img
               src={logo}
-              alt="Boodmoard"
+              alt="site logo"
               className="w-[140px] xl:w-[160px]  3xl:w-[220px]  mb-4 xl:mb-6 2xl:mb-8 3xl:mb-12"
             />
             <p className="text-zinc-400  leading-7 max-w-sm xl:max-w-md 2xl:max-w-xl 3xl:max-w-2xl xl:mb-4 2xl:mb-6 3xl:mb-8 text-sm xl:text-base 2xl:text-lg 3xl:text-2xl">

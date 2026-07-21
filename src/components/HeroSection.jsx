@@ -389,7 +389,13 @@ export default function HeroSection({ id }) {
               className="hidden lg:flex w-1/2 justify-center items-center relative"
             >
               {/* Main image card */}
-              <div className="relative w-[380px] h-[460px] 2xl:w-[480px] 2xl:h-[560px] 3xl:w-[800px] 3xl:h-[900px]">
+              <div
+                className="relative w-[380px] h-[460px] xl:w-[480px] xl:h-[560px]
+              
+               4xl:w-[650px] 4xl:h-[700px]
+  5xl:w-[800px] 5xl:h-[900px]
+              3xl:w-[1000px] 3xl:h-[900px]"
+              >
                 <div className="absolute inset-0 rounded-3xl overflow-hidden border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.6)]">
                   <img
                     src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=800&q=80"

@@ -223,11 +223,11 @@
 //   );
 // }
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import logo from "../assets/nexlify-logo-transparent-cropped.png";
+import logo from "../assets/nexlify-logo-transparent-bg.png";
 import { useLoader } from "../components/context/LoaderContext";
 import { useRouteChangeStairs } from "../components/context/RouteChangeStairsContext";
 
@@ -242,7 +242,7 @@ const fadeUp = {
     y: 0,
     transition: {
       duration: 0.7,
-
+      delay: 0.8,
       ease: [0.25, 0.1, 0.25, 1],
     },
   }),
@@ -383,6 +383,32 @@ const sections = [
 ];
 
 export default function PrivacyPolicy() {
+  useLayoutEffect(() => {
+    document.title = "Privacy Policy — Nexlify Creative Studio";
+
+    const meta = document.querySelector("meta[name='description']");
+    if (meta)
+      meta.setAttribute(
+        "content",
+        "Read Nexlify's Privacy Policy to understand how we collect, use, and protect your personal information when you contact us or use our services.",
+      );
+
+    let canonical = document.querySelector("link[rel='canonical']");
+    if (canonical)
+      canonical.setAttribute("href", "https://nexlify.com/privacy");
+
+    // cleanup
+    return () => {
+      document.title = "Nexlify — Creative Digital Agency";
+      if (meta)
+        meta.setAttribute(
+          "content",
+          "Nexlify is a creative digital agency building modern websites, bold brand identities, and high-converting digital products. Based in Karachi, Pakistan.",
+        );
+      if (canonical) canonical.setAttribute("href", "https://nexlify.com/");
+    };
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -392,11 +418,11 @@ export default function PrivacyPolicy() {
   const { isLoaded, isRouteChanging } = useRouteChangeStairs();
 
   return (
-    <div className="bg-black min-h-screen text-white">
-      <header className="fixed z-50 w-full flex items-center justify-between px-[var(--section-padding-x)] lg:px-[var(--section-padding-lg)] xl:px-[var(--section-padding-xl)] py-4 bg-black/80 backdrop-blur-md border-b border-white/5">
+    <div className="bg-black min-h-screen text-white   ">
+      <header className="fixed z-50 w-full   flex items-center justify-between px-[var(--section-padding-x)] lg:px-[var(--section-padding-lg)] xl:px-[var(--section-padding-xl)] py-4 bg-black/80 backdrop-blur-md border-b border-white/5">
         <Link
           to="/"
-          className="w-[160px] xl:w-[200px] 3xl:w-[350px] flex items-center"
+          className="w-[140px] xl:w-[160px]  3xl:w-[220px] flex items-center"
         >
           <img
             className="w-full h-full object-contain"
@@ -417,7 +443,7 @@ export default function PrivacyPolicy() {
         </Link>
       </header>
 
-      <div className="max-w-3xl 3xl:max-w-6xl mx-auto px-6 pt-36 pb-24">
+      <div className="max-w-3xl  3xl:max-w-6xl mx-auto px-6 pt-36 pb-24">
         {/* Header */}
         <motion.div
           variants={fadeUp}
