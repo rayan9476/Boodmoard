@@ -6,23 +6,24 @@ A modern, high-performance agency landing page built with React, Vite, Tailwind 
 
 ## Live Demo
 
-> [https://nexlify.vercel.app](https://nexlify.vercel.app) — replace after deploy
+> [https://nexlify-bice.vercel.app/](https://nexlify-bice.vercel.app/)
 
 ---
 
 ## Screenshots
 
-> Add after deploying — take screenshots of each section and drop into `/screenshots`
+> Located in `src/assets/projects/nexlify/`
 
-```
-screenshots/
-├── hero.png
-├── services.png
-├── works.png
-├── testimonials.png
-├── instagram.png
-└── contact.png
-```
+src/assets/projects/nexlify/
+├── HeroSection.png
+├── ServicesSection.png
+├── ServicesSectionMobile.png
+├── OurWorksSection.png
+├── TestimonialsSection.png
+├── InstagramSection.png
+├── InstagramSectionMobile.png
+├── CTASection.png
+└── ContactSection.png
 
 ---
 
@@ -44,54 +45,74 @@ screenshots/
 
 ## Project Structure
 
-```
 nexlify-landing/
 ├── public/
-│   ├── favicon.png
-│   ├── apple-touch-icon.png
-│   ├── robots.txt
-│   ├── sitemap.xml
-│   └── site.webmanifest
+│ ├── favicon.ico
+│ ├── favicon.svg
+│ ├── favicon-16x16.png
+│ ├── favicon-32x32.png
+│ ├── favicon-48x48.png
+│ ├── apple-touch-icon.png
+│ ├── android-chrome-192x192.png
+│ ├── android-chrome-512x512.png
+│ ├── icon-256x256.png
+│ ├── icons.svg
+│ ├── nexlify-favicon-32x32.png
+│ ├── nexlify-small-logo.png
+│ ├── robots.txt
+│ ├── sitemap.xml
+│ └── site.webmanifest
 ├── src/
-│   ├── assets/
-│   │   └── nexlify-transparent-cropped.png
-│   ├── components/
-│   │   ├── hooks/
-│   │   │   ├── useFakeScrollbar.js
-│   │   │   ├── useScrollTo.js
-│   │   │   ├── useCountUp.js
-│   │   │   └── useRouteChangeStairsAnimation.js
-│   │   ├── context/
-│   │   │   └── RouteChangeStairsContext.jsx
-│   │   ├── Navbar.jsx
-│   │   ├── HeroSection.jsx
-│   │   ├── ServicesSection.jsx
-│   │   ├── ServiceModal.jsx
-│   │   ├── OurWorks.jsx
-│   │   ├── ProjectModal.jsx
-│   │   ├── TestimonialsSection.jsx
-│   │   ├── InstagramSection.jsx
-│   │   ├── ReelModal.jsx
-│   │   ├── ContactSection.jsx
-│   │   ├── CTASection.jsx
-│   │   ├── FooterSection.jsx
-│   │   ├── PageLoader.jsx
-│   │   ├── CustomCursor.jsx
-│   │   └── RouteChangeStairs.jsx
-│   ├── pages/
-│   │   ├── PrivacyPolicy.jsx
-│   │   └── TermsOfService.jsx
-│   ├── App.jsx
-│   ├── main.jsx
-│   └── index.css
+│ ├── assets/
+│ │ ├── fonts/
+│ │ │ └── InterVariable.woff2
+│ │ ├── nexlify-transparent-cropped.png
+│ │ ├── hero.png
+│ │ └── nexlify-logo-transparent-bg.png
+│ ├── components/
+│ │ ├── common/
+│ │ │ ├── Navbar.jsx
+│ │ │ ├── Footer.jsx
+│ │ │ ├── GlobalUI.jsx
+│ │ │ └── PageLoader.jsx
+│ │ ├── context/
+│ │ │ ├── LoaderContext.jsx
+│ │ │ └── RouteChangeStairsContext.jsx
+│ │ ├── hooks/
+│ │ │ ├── useFakeScrollbar.js
+│ │ │ ├── useScrollTo.js
+│ │ │ ├── useCountUp.js
+│ │ │ ├── useCustomCursor.js
+│ │ │ └── useRouteChangeStairsAnimation.js
+│ │ ├── HeroSection.jsx
+│ │ ├── NavbarMenu.jsx
+│ │ ├── ServicesSection.jsx
+│ │ ├── ServiceModal.jsx
+│ │ ├── OurWorks.jsx
+│ │ ├── ProjectModal.jsx
+│ │ ├── TestimonialsSection.jsx
+│ │ ├── InstagramSection.jsx
+│ │ ├── ReelModal.jsx
+│ │ ├── ContactSection.jsx
+│ │ ├── CTASection.jsx
+│ │ ├── LenisProvider.jsx
+│ │ ├── CustomCursor.jsx
+│ │ └── RouteChangeStairs.jsx
+│ ├── pages/
+│ │ ├── HomePage.jsx
+│ │ ├── PrivacyPolicy.jsx
+│ │ └── TermsOfService.jsx
+│ ├── App.jsx
+│ ├── App.css
+│ └── main.jsx
 ├── .gitignore
 ├── index.html
 ├── package.json
-├── tailwind.config.js
-├── postcss.config.js
+├── package-lock.json
+├── eslint.config.js
 ├── vite.config.js
+├── vercel.json
 └── README.md
-```
 
 ---
 
@@ -268,18 +289,16 @@ npm install
 
 Find & replace in your editor:
 
-```
-Nexlify   →   Client Agency Name
-nexlify   →   clientagencyname
-```
+Nexlify → Client Agency Name
+nexlify → clientagencyname
 
 **Step 3 — Replace logo**
 
 Drop client logo PNG into `src/assets/` and update the import in:
 
-- `Navbar.jsx`
-- `FooterSection.jsx`
-- `PageLoader.jsx`
+- `common/Navbar.jsx`
+- `common/Footer.jsx`
+- `common/PageLoader.jsx`
 - `PrivacyPolicy.jsx`
 - `TermsOfService.jsx`
 
@@ -287,10 +306,9 @@ Drop client logo PNG into `src/assets/` and update the import in:
 
 Find & replace globally:
 
-```
-#4CAF4F   →   client primary color
-#43A047   →   client hover color (slightly darker)
-```
+#4CAF4F → client primary color
+
+#43A047 → client hover color (slightly darker)
 
 **Step 5 — Update all content**
 
@@ -304,10 +322,10 @@ All data lives at the top of each component as a plain array or object — no CM
 | Testimonials      | `TestimonialsSection.jsx` | `testimonials[]`        |
 | Instagram profile | `InstagramSection.jsx`    | `profile{}`             |
 | Reel videos       | `InstagramSection.jsx`    | `allReels[]`            |
-| Nav links         | `Navbar.jsx`              | `navLinks[]`            |
-| Footer links      | `FooterSection.jsx`       | links arrays            |
+| Nav links         | `common/Navbar.jsx`       | `navLinks[]`            |
+| Footer links      | `common/Footer.jsx`       | links arrays            |
 | Contact info      | `ContactSection.jsx`      | `contactInfo[]`         |
-| Social links      | `FooterSection.jsx`       | `socials[]`             |
+| Social links      | `common/Footer.jsx`       | `socials[]`             |
 
 **Step 6 — Update meta tags**
 
@@ -424,9 +442,7 @@ npm run build
 
 Add `public/_redirects` for React Router to work:
 
-```
-/*    /index.html   200
-```
+/\* /index.html 200
 
 ---
 
@@ -467,7 +483,7 @@ This project is a commercial template for selling web development services. You 
 
 ## Author
 
-Built by **Rayyan** — Frontend Developer based in Karachi, Pakistan.
+Built by **Rayyan** — Full Stack Developer based in Karachi, Pakistan.
 
 - Fiverr: [fiverr.com/yourusername](https://fiverr.com/yourusername)
 - GitHub: [github.com/yourusername](https://github.com/yourusername)

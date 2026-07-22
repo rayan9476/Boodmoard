@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaArrowRight, FaTimes } from "react-icons/fa";
+import { useScrollTo } from "./hooks/useScrollTo";
 
 const TRANSITION = {
   type: "spring",
@@ -28,6 +29,17 @@ export default function ProjectModal({ project, onClose, onContact }) {
     };
   }, []);
 
+  const scrollTo = useScrollTo();
+
+  const handleClick = (e, target) => {
+    e.preventDefault();
+    onClose();
+
+    setTimeout(() => {
+      scrollTo(target);
+    }, 800);
+  };
+
   if (!project) return null;
 
   return (
@@ -50,7 +62,6 @@ export default function ProjectModal({ project, onClose, onContact }) {
         {/* Modal card */}
         <motion.div
           layoutId={`card-${project.id}`}
-          layout
           onClick={(e) => e.stopPropagation()}
           transition={TRANSITION}
           data-lenis-prevent
@@ -72,7 +83,6 @@ export default function ProjectModal({ project, onClose, onContact }) {
             <div className="relative h-64 md:h-80 3xl:h-96 overflow-hidden ">
               <motion.img
                 layoutId={`image-${project.id}`}
-                // layout
                 transition={TRANSITION}
                 src={project.image}
                 alt={project.title}
@@ -83,7 +93,6 @@ export default function ProjectModal({ project, onClose, onContact }) {
               <div className="absolute top-5 left-5">
                 <motion.span
                   layoutId={`category-${project.id}`}
-                  layout
                   transition={TRANSITION}
                   className="bg-[#4CAF4F]/20 border border-[#4CAF4F]/40 text-[#4CAF4F] text-xs 2xl:text-base font-semibold px-3 py-1.5 rounded-full uppercase tracking-widest"
                 >
@@ -96,7 +105,6 @@ export default function ProjectModal({ project, onClose, onContact }) {
             <div className="p-2.5 md:p-8">
               <motion.h3
                 layoutId={`title-${project.id}`}
-                layout
                 transition={TRANSITION}
                 className="text-white text-2xl md:text-3xl 2xl:text-4xl 3xl:text-5xl font-bold mb-3"
               >
@@ -104,7 +112,6 @@ export default function ProjectModal({ project, onClose, onContact }) {
               </motion.h3>
               <motion.p
                 layoutId={`desc-${project.id}`}
-                layout
                 transition={TRANSITION}
                 className="text-zinc-400 leading-7 2xl:text-lg 3xl:text-xl mb-6"
               >
@@ -165,15 +172,15 @@ export default function ProjectModal({ project, onClose, onContact }) {
 
               {/* CTA */}
               <motion.button
+                type="button"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ delay: 0.35, duration: 0.25 }}
-                onClick={() => {
-                  onClose();
-                  onContact();
+                onClick={(e) => {
+                  handleClick(e, "#contact");
                 }}
-                className="w-full xs-text  text-sm 2xl:text-xl 3xl:text-2xl bg-[#4CAF4F] hover:bg-[#43A047] text-white font-semibold py-4 md:px-8 rounded-xl flex items-center justify-center xs-gap gap-3 transition-all duration-300 hover:scale-[1.02] cursor-pointer border-none shadow-[0_4px_20px_rgba(76,175,79,0.3)]"
+                className="w-full xs-text  text-sm 2xl:text-xl 3xl:text-2xl bg-[#4CAF4F] hover:bg-[#43A047] text-white font-semibold py-4 md:px-8 rounded-xl flex items-center justify-center xs-gap gap-2 md:gap-3 transition-all duration-300 hover:scale-[1.02] cursor-pointer border-none shadow-[0_4px_20px_rgba(76,175,79,0.3)]"
               >
                 Interested in similar work? Let's talk
                 <FaArrowRight size={18} className="xs-w-h  3xl:h-7 3xl:w-7" />

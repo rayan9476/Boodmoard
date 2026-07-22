@@ -1,7 +1,7 @@
 import HeroSection from "../components/HeroSection";
 import { lazy, Suspense } from "react";
 const ServicesSection = lazy(() => import("../components/ServicesSection"));
-const OurWorks = lazy(() => import("../components/OurWorks"));
+const OurWorksSection = lazy(() => import("../components/OurWorksSection"));
 const TestimonialsSection = lazy(
   () => import("../components/TestimonialsSection"),
 );
@@ -18,7 +18,7 @@ function HomePage() {
       <HeroSection id="home" />
       <Suspense fallback={null}>
         <ServicesSection id="services" />
-        <OurWorks id="works" />
+        <OurWorksSection id="works" />
         <TestimonialsSection id="testimonials" />
         <InstagramSection id="instagram" />
         <CTASection id="FAQ" />

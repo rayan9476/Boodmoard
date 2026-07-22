@@ -123,7 +123,6 @@ export default function ReelModal({ reel, onClose }) {
       {/* Modal */}
       <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 pointer-events-none">
         <motion.div
-          layout
           layoutId={`reel-card-${reel.id}`}
           onClick={(e) => e.stopPropagation()}
           onMouseMove={handleMouseMove}
@@ -257,7 +256,7 @@ export default function ReelModal({ reel, onClose }) {
 
               {/* Instagram badge */}
               <span className="text-[#4CAF4F] text-xs 2xl:text-base">
-                @boodmoard
+                @nexlify
               </span>
             </div>
           </motion.div>

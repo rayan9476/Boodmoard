@@ -7,8 +7,8 @@ import { lazy, Suspense } from "react";
 const ReelModal = lazy(() => import("./ReelModal"));
 
 const profile = {
-  username: "@boodmoard",
-  name: "Boodmoard Creative Studio",
+  username: "@nexlify",
+  name: "Nexlify Creative Studio",
   avatar:
     "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&q=80",
   posts: "284",

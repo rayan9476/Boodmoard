@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaArrowRight, FaTimes } from "react-icons/fa";
+import { useScrollTo } from "./hooks/useScrollTo";
 
 const TRANSITION = {
   type: "spring",
@@ -25,6 +26,17 @@ export default function ServiceModal({ service, onClose, onContact }) {
       if (lenis) lenis.start();
     };
   }, []);
+
+  const scrollTo = useScrollTo();
+
+  const handleClick = (e, target) => {
+    e.preventDefault();
+    onClose();
+
+    setTimeout(() => {
+      scrollTo(target);
+    }, 800);
+  };
 
   if (!service) return null;
 
@@ -53,7 +65,6 @@ export default function ServiceModal({ service, onClose, onContact }) {
         {/* Modal card  */}
         <motion.div
           layoutId={`service-card-${service.id}`}
-          layout
           onClick={(e) => e.stopPropagation()}
           transition={TRANSITION}
           data-lenis-prevent
@@ -72,14 +83,13 @@ export default function ServiceModal({ service, onClose, onContact }) {
             </button>
 
             {/* Header  */}
-            <div className="relative h-48 md:h-64 3xl:h-80 overflow-hidden rounded-t-[32px] bg-gradient-to-br from-[#4CAF4F]/10 via-[#0a0a0a] to-[#0a0a0a] flex items-center justify-center">
+            <div className="relative h-48 md:h-64 3xl:h-80 overflow-hidden  bg-gradient-to-br from-[#4CAF4F]/10 via-[#0a0a0a] to-[#0a0a0a] flex items-center justify-center">
               {/* Background glow */}
               <div className="absolute inset-0 bg-[#4CAF4F]/5" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#4CAF4F]/10 rounded-full blur-[80px]" />
 
               <motion.div
                 layoutId={`service-icon-${service.id}`}
-                layout
                 transition={TRANSITION}
                 className="relative rounded-2xl z-10 w-20 h-20 2xl:w-24 2xl:h-24 3xl:w-28 3xl:h-28 border border-[#4CAF4F]/20 bg-[#4CAF4F]/10 flex items-center justify-center"
               >
@@ -93,7 +103,6 @@ export default function ServiceModal({ service, onClose, onContact }) {
               <div className="absolute top-5 left-5">
                 <motion.span
                   layoutId={`service-category-${service.id}`}
-                  layout
                   transition={TRANSITION}
                   className="bg-[#4CAF4F]/20 border border-[#4CAF4F]/40 text-[#4CAF4F] text-xs 2xl:text-base font-semibold px-3 py-1.5 rounded-full uppercase tracking-widest"
                 >
@@ -109,7 +118,6 @@ export default function ServiceModal({ service, onClose, onContact }) {
               {/* Title  */}
               <motion.h3
                 layoutId={`service-title-${service.id}`}
-                layout
                 transition={TRANSITION}
                 className="text-white text-2xl md:text-3xl 2xl:text-4xl 3xl:text-5xl font-bold mb-3"
               >
@@ -119,7 +127,6 @@ export default function ServiceModal({ service, onClose, onContact }) {
               {/* Desc  */}
               <motion.p
                 layoutId={`service-desc-${service.id}`}
-                layout
                 transition={TRANSITION}
                 className="text-zinc-400 leading-7 2xl:text-lg 3xl:text-xl mb-6"
               >
@@ -205,15 +212,15 @@ export default function ServiceModal({ service, onClose, onContact }) {
 
               {/* CTA  */}
               <motion.button
+                type="button"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0 }}
                 transition={{ delay: 0.35, duration: 0.25 }}
-                onClick={() => {
-                  onClose();
-                  onContact();
+                onClick={(e) => {
+                  handleClick(e, "#contact");
                 }}
-                className="w-full xs-text text-sm 2xl:text-xl 3xl:text-2xl bg-[#4CAF4F] hover:bg-[#43A047] text-white font-semibold py-4 md:px-8 rounded-xl flex items-center justify-center xs-gap gap-3 transition-all duration-300 hover:scale-[1.02] cursor-pointer border-none shadow-[0_4px_20px_rgba(76,175,79,0.3)]"
+                className="w-full xs-text text-sm 2xl:text-xl 3xl:text-2xl bg-[#4CAF4F] hover:bg-[#43A047] text-white font-semibold py-4 md:px-8 rounded-xl flex items-center justify-center xs-gap gap-2 md:gap-3 transition-all duration-300 hover:scale-[1.02] cursor-pointer border-none shadow-[0_4px_20px_rgba(76,175,79,0.3)]"
               >
                 Get Started with {service.title}
                 <FaArrowRight size={18} className="xs-w-h 3xl:h-7 3xl:w-7" />

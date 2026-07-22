@@ -3,7 +3,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { lazy, Suspense } from "react";
 const ProjectModal = lazy(() => import("./ProjectModal"));
-import { useScrollTo } from "./hooks/useScrollTo";
+
 import { AnimatePresence } from "framer-motion";
 import { LayoutGroup } from "framer-motion";
 import { div } from "framer-motion/client";
@@ -71,14 +71,8 @@ const works = [
   },
 ];
 
-export default function OurWorks({ id }) {
+export default function OurWorksSection({ id }) {
   const [selectedProject, setSelectedProject] = useState(null);
-
-  const scrollTo = useScrollTo();
-
-  const handleContact = () => {
-    scrollTo("#contact");
-  };
 
   return (
     <>
@@ -172,7 +166,6 @@ export default function OurWorks({ id }) {
               <ProjectModal
                 project={selectedProject}
                 onClose={() => setSelectedProject(null)}
-                onContact={handleContact}
               />
             </Suspense>
           )}
