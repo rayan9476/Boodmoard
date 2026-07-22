@@ -427,6 +427,12 @@ export default function ContactSection({ id }) {
                           </svg>
                         </button>
 
+                        {errors.service && (
+                          <p className="text-red-400 text-xs 3xl:text-base mt-3 flex items-center gap-1">
+                            <span>⚠</span> {errors.service}
+                          </p>
+                        )}
+
                         {/* Menu */}
                         <AnimatePresence mode="wait">
                           {serviceOpen && (
@@ -520,31 +526,39 @@ export default function ContactSection({ id }) {
                   </div>
 
                   {/* Message */}
-                  <div className="flex flex-col gap-2">
+                  <div className="flex flex-col gap-2 overflow-hidden scrollbar-none rounded-xl">
                     <label className="text-zinc-400 text-sm 3xl:text-lg font-medium">
                       Project Details
                     </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      onFocus={() => setFocused("message")}
-                      onBlur={() => setFocused("")}
-                      placeholder="Tell us about your project, goals, timeline..."
-                      required
-                      rows={5}
-                      className={`bg-white/5 border rounded-xl px-4 py-3.5 text-white text-sm 3xl:text-lg  placeholder-zinc-600 outline-none transition-all duration-300 resize-none
-                        ${
-                          focused === "message"
-                            ? "border-[#4CAF4F]/60 bg-[#4CAF4F]/5 shadow-[0_0_0_3px_rgba(76,175,79,0.1)]"
-                            : "border-white/10 hover:border-white/20"
-                        }`}
-                    />
-                    {errors.message && (
-                      <p className="text-red-400 text-xs 2xl:text-[14px] 3xl:text-base mt-1 flex items-center gap-1">
-                        <span>⚠</span> {errors.message}
-                      </p>
-                    )}
+
+                    <div
+                      className={`bg-white/5  rounded-xl   border  w-full overflow-hidden 
+                    
+                     ${
+                       focused === "message"
+                         ? "border-[#4CAF4F]/60 bg-[#4CAF4F]/5 shadow-[0_0_0_3px_rgba(76,175,79,0.1)]"
+                         : "border-white/10 hover:border-white/20"
+                     }`}
+                    >
+                      <textarea
+                        name="message"
+                        data-lenis-prevent
+                        value={formData.message}
+                        onChange={handleChange}
+                        onFocus={() => setFocused("message")}
+                        onBlur={() => setFocused("")}
+                        placeholder="Tell us about your project, goals, timeline..."
+                        required
+                        rows={5}
+                        className={`  custom-scrollbar w-full   px-4 py-3.5 text-white text-sm 3xl:text-lg  placeholder-zinc-600 outline-none transition-all duration-300 resize-none
+                        `}
+                      />
+                      {errors.message && (
+                        <p className="text-red-400 text-xs 2xl:text-[14px] 3xl:text-base mt-1 flex items-center gap-1">
+                          <span>⚠</span> {errors.message}
+                        </p>
+                      )}
+                    </div>
                   </div>
 
                   {/* Submit */}
